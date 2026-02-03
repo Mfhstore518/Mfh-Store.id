@@ -1,4 +1,3 @@
-cat > index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -21,6 +20,8 @@ cat > index.html << 'EOF'
             --meta-blue: #0668E1; 
             --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
             --card-bg: linear-gradient(145deg, rgba(0, 102, 255, 0.15), rgba(10, 10, 26, 0.9));
+            --ai-color: #00ccff;
+            --ai-dark: #003366;
         } 
         
         * { 
@@ -42,6 +43,9 @@ cat > index.html << 'EOF'
                 radial-gradient(circle at 50% 50%, rgba(255, 0, 255, 0.05) 0%, transparent 60%);
         } 
         
+        /* ===========================================
+           BACKGROUND MODERN SUPER PROFESIONAL - DIUBAH
+        =========================================== */
         .modern-bg {
             position: fixed;
             top: 0;
@@ -155,6 +159,9 @@ cat > index.html << 'EOF'
             }
         }
         
+        /* ===========================================
+           PARTICLE BACKGROUND - BARU
+        =========================================== */
         .particles-container {
             position: fixed;
             width: 100%;
@@ -189,6 +196,9 @@ cat > index.html << 'EOF'
             }
         }
         
+        /* ===========================================
+           LOADING SCREEN STYLES
+        =========================================== */
         #loading-screen {
             position: fixed;
             top: 0;
@@ -248,6 +258,9 @@ cat > index.html << 'EOF'
             transition: width 0.3s ease;
         }
         
+        /* ===========================================
+           MAIN CONTENT STYLES
+        =========================================== */
         #main-content {
             display: none;
             opacity: 0;
@@ -260,6 +273,7 @@ cat > index.html << 'EOF'
             }
         }
         
+        /* HEADER STYLE - DIUBAH */
         header { 
             min-height: 40vh; 
             padding: 40px 20px; 
@@ -388,6 +402,7 @@ cat > index.html << 'EOF'
             box-shadow: 0 0 10px var(--accent);
         }
 
+        /* PERBAIKAN GRID KEUNGGULAN - DIUBAH */
         .feature-grid { 
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
@@ -403,6 +418,7 @@ cat > index.html << 'EOF'
             position: relative;
         } 
         
+        /* STYLE CARD PRODUK PROFESIONAL - DIUBAH */
         .product-card { 
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px); 
@@ -533,6 +549,7 @@ cat > index.html << 'EOF'
             box-shadow: 0 8px 25px rgba(0, 102, 255, 0.5);
         }
 
+        /* BADGE RECOMMENDED - BARU */
         .recommended-badge {
             position: absolute;
             top: 10px;
@@ -758,6 +775,226 @@ cat > index.html << 'EOF'
             box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
         }
 
+        /* ===========================================
+           AI CHAT WIDGET STYLES - SIMPLE & PROFESIONAL
+        =========================================== */
+        #ai-chat-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            max-width: 90vw;
+            z-index: 9998;
+            display: none;
+        }
+        
+        #ai-chat-container.active {
+            display: block;
+            animation: chatSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes chatSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .ai-chat-window {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+        
+        .ai-chat-header {
+            background: linear-gradient(90deg, var(--ai-dark), rgba(0, 102, 255, 0.8));
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .ai-chat-header h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ai-close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            transition: 0.3s;
+        }
+        
+        .ai-close-btn:hover {
+            color: var(--ai-color);
+        }
+        
+        .ai-chat-body {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ai-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .ai-message {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            animation: messageAppear 0.3s ease-out;
+        }
+        
+        @keyframes messageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .ai-message.bot {
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            align-self: flex-start;
+        }
+        
+        .ai-message.user {
+            background: rgba(138, 43, 226, 0.1);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            align-self: flex-end;
+        }
+        
+        .ai-typing {
+            display: flex;
+            gap: 5px;
+            padding: 15px 20px;
+            background: rgba(0, 102, 255, 0.05);
+            border-radius: 15px;
+            width: fit-content;
+            margin-left: 20px;
+        }
+        
+        .ai-typing span {
+            width: 8px;
+            height: 8px;
+            background: var(--ai-color);
+            border-radius: 50%;
+            animation: typing 1.5s infinite ease-in-out;
+        }
+        
+        .ai-typing span:nth-child(1) { animation-delay: 0s; }
+        .ai-typing span:nth-child(2) { animation-delay: 0.2s; }
+        .ai-typing span:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(-5px); opacity: 1; }
+        }
+        
+        .ai-input-area {
+            padding: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 10px;
+        }
+        
+        .ai-input {
+            flex: 1;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 0.85rem;
+        }
+        
+        .ai-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .ai-send-btn {
+            background: linear-gradient(45deg, var(--primary), var(--ai-color));
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        
+        .ai-send-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* AI FAB Button */
+        #ai-fab-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--ai-dark), var(--ai-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 9997;
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.5);
+            transition: 0.3s;
+            border: none;
+            animation: float 3s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        #ai-fab-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 102, 255, 0.7);
+        }
+        
+        /* FAB Button */
         .fab-wrapper { 
             position: fixed; 
             bottom: 30px; 
@@ -781,15 +1018,6 @@ cat > index.html << 'EOF'
             animation: float 3s infinite ease-in-out;
             animation-delay: 0.5s;
         } 
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
         
         .fab-main:hover {
             transform: scale(1.1);
@@ -830,6 +1058,7 @@ cat > index.html << 'EOF'
             transform: scale(1.1);
         }
         
+        /* QR CODE */
         .qr-code-container {
             text-align: center;
             margin-bottom: 20px;
@@ -849,6 +1078,7 @@ cat > index.html << 'EOF'
             box-shadow: 0 15px 40px rgba(0, 102, 255, 0.5);
         }
         
+        /* RESPONSIVE FIXES */
         @media (max-width: 1100px) {
             .product-grid { grid-template-columns: repeat(4, 1fr); }
             .info-box { grid-template-columns: 1fr 1fr; }
@@ -860,6 +1090,11 @@ cat > index.html << 'EOF'
             .product-grid { grid-template-columns: repeat(2, 1fr); }
             .payment-content { grid-template-columns: 1fr; }
             .info-box { grid-template-columns: 1fr; }
+            #ai-chat-container {
+                width: calc(100vw - 40px);
+                right: 20px;
+                bottom: 80px;
+            }
             .fab-wrapper { 
                 bottom: 30px; 
                 right: 90px; 
@@ -869,6 +1104,13 @@ cat > index.html << 'EOF'
         @media (max-width: 480px) {
             .product-card { padding: 20px 15px; }
             .product-card h3 { font-size: 0.8rem; }
+            .ai-chat-body { height: 350px; }
+            #ai-fab-btn { 
+                bottom: 20px; 
+                right: 20px; 
+                width: 55px; 
+                height: 55px; 
+            }
             .fab-wrapper { 
                 bottom: 20px; 
                 right: 80px; 
@@ -910,6 +1152,43 @@ cat > index.html << 'EOF'
 
         <!-- PARTICLE BACKGROUND -->
         <div class="particles-container" id="particles-container"></div>
+
+        <!-- AI CHAT WIDGET -->
+        <div id="ai-chat-container">
+            <div class="ai-chat-window">
+                <div class="ai-chat-header">
+                    <h3><i class="fas fa-robot"></i> AI Assistant MFH Store</h3>
+                    <button class="ai-close-btn" onclick="closeAIChat()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="ai-chat-body">
+                    <div class="ai-messages" id="aiMessages">
+                        <div class="ai-message bot">
+                            <strong>Halo! Saya AI Assistant MFH Store</strong><br><br>
+                            Saya siap membantu Anda dengan informasi produk:<br>
+                            • Rekening Digital Internasional<br>
+                            • E-Wallet Indonesia & Malaysia<br>
+                            • Crypto E-Money<br>
+                            • Jasa Followers Media<br>
+                            • Pembuatan Website<br><br>
+                            Silakan tanyakan tentang produk kami!
+                        </div>
+                    </div>
+                    <div class="ai-input-area">
+                        <input type="text" class="ai-input" id="aiInput" placeholder="Tanya tentang produk..." onkeypress="if(event.key === 'Enter') sendAIMessage()">
+                        <button class="ai-send-btn" onclick="sendAIMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI FAB Button -->
+        <button id="ai-fab-btn" onclick="toggleAIChat()">
+            <i class="fas fa-robot"></i>
+        </button>
 
         <!-- FAB Button -->
         <div class="fab-wrapper" id="helpFab"> 
@@ -1263,6 +1542,103 @@ cat > index.html << 'EOF'
         });
 
         // ===========================================
+        // AI CHAT FUNCTIONALITY - FIXED
+        // ===========================================
+        // GANTI API KEY INI DENGAN YANG BARU!
+        // API Key removed for security
+        
+        // System prompt khusus untuk MFH Store - FIXED
+        // System prompt removed
+
+        let aiChatHistory = [
+            {
+                role: "system",
+                content: SYSTEM_PROMPT
+            }
+        ];
+
+        function toggleAIChat() {
+            const chatContainer = document.getElementById('ai-chat-container');
+            chatContainer.classList.toggle('active');
+        }
+
+        function closeAIChat() {
+            const chatContainer = document.getElementById('ai-chat-container');
+            chatContainer.classList.remove('active');
+        }
+
+        
+        async function sendAIMessage() {
+            const input = document.getElementById('aiInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addAIMessage(message, 'user');
+            input.value = '';
+            
+            // Add typing indicator
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'ai-typing';
+            typingDiv.innerHTML = '<span></span><span></span><span></span>';
+            document.getElementById('aiMessages').appendChild(typingDiv);
+            
+            // Scroll to bottom
+            scrollAIMessages();
+            
+            // Simulate AI thinking
+            setTimeout(() => {
+                // Remove typing indicator
+                if (typingDiv.parentNode) {
+                    typingDiv.parentNode.removeChild(typingDiv);
+                }
+                
+                // Dummy responses based on keywords
+                let aiResponse = "";
+                const msg = message.toLowerCase();
+                
+                if (msg.includes('harga') || msg.includes('biaya') || msg.includes('berapa')) {
+                    aiResponse = "Untuk info harga terupdate, silakan hubungi Admin di WhatsApp 0819 9859 3873";
+                } else if (msg.includes('rekening') || msg.includes('bank') || msg.includes('e-wallet')) {
+                    aiResponse = "MFH Store menyediakan berbagai jenis rekening digital: Indonesia, Malaysia, Singapura, Philips, China, dan daerah. E-Wallet Indonesia & Malaysia juga tersedia. Klik tombol 'Order Now' pada produk yang Anda minati.";
+                } else if (msg.includes('cara') || msg.includes('order') || msg.includes('beli')) {
+                    aiResponse = "Cara order: 1. Klik tombol 'Order Now' pada produk 2. Lengkapi form pembayaran 3. Konfirmasi ke Admin WhatsApp 0819 9859 3873";
+                } else if (msg.includes('garansi') || msg.includes('jamin') || msg.includes('aman')) {
+                    aiResponse = "MFH Store memberikan FULL GARANSI pada semua produk. Proses 20-30 menit, terima jadi, kualitas VVIP.";
+                } else if (msg.includes('kontak') || msg.includes('admin') || msg.includes('whatsapp')) {
+                    aiResponse = "Admin MFH Store: WhatsApp 0819 9859 3873";
+                } else {
+                    aiResponse = "Untuk informasi lengkap tentang produk MFH Store, silakan hubungi Admin WhatsApp 0819 9859 3873 atau klik tombol 'Order Now' pada produk yang diminati.";
+                }
+                
+                // Add AI response
+                addAIMessage(aiResponse, 'bot');
+                
+                scrollAIMessages();
+            }, 1500);
+        }
+function addAIMessage(text, sender) {
+            const messagesContainer = document.getElementById('aiMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `ai-message ${sender}`;
+            messageDiv.textContent = text;
+            messagesContainer.appendChild(messageDiv);
+        }
+
+        function scrollAIMessages() {
+            const messagesContainer = document.getElementById('aiMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Enter key untuk AI input
+        document.getElementById('aiInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendAIMessage();
+            }
+        });
+
+        // ===========================================
         // MAIN PAGE FUNCTIONALITY
         // ===========================================
         let currentProduct = "";
@@ -1371,4 +1747,3 @@ cat > index.html << 'EOF'
     </script>
 </body>
 </html>
-EOF
