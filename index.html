@@ -645,13 +645,12 @@
 
         /* ===========================================
            AI CHAT WIDGET STYLES - SIMPLE & PROFESIONAL
-           DIUBAH JADI LIVE CHAT SIMPLE TANPA API KEY
         =========================================== */
         #ai-chat-container {
             position: fixed;
             bottom: 100px;
             right: 30px;
-            width: 350px;
+            width: 380px;
             max-width: 90vw;
             z-index: 9998;
             display: none;
@@ -674,16 +673,16 @@
         }
         
         .ai-chat-window {
-            background: rgba(15, 15, 35, 0.95);
+            background: rgba(15, 15, 35, 0.98);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(0, 102, 255, 0.3);
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
             overflow: hidden;
         }
         
         .ai-chat-header {
-            background: linear-gradient(90deg, var(--ai-dark), rgba(0, 102, 255, 0.8));
+            background: linear-gradient(90deg, var(--ai-dark), rgba(0, 102, 255, 0.9));
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
@@ -716,7 +715,7 @@
         }
         
         .ai-chat-body {
-            height: 400px;
+            height: 450px;
             display: flex;
             flex-direction: column;
         }
@@ -737,6 +736,7 @@
             font-size: 0.85rem;
             line-height: 1.5;
             animation: messageAppear 0.3s ease-out;
+            white-space: pre-line;
         }
         
         @keyframes messageAppear {
@@ -754,12 +754,14 @@
             background: rgba(0, 102, 255, 0.1);
             border: 1px solid rgba(0, 102, 255, 0.2);
             align-self: flex-start;
+            border-top-left-radius: 5px;
         }
         
         .ai-message.user {
             background: rgba(138, 43, 226, 0.1);
             border: 1px solid rgba(138, 43, 226, 0.2);
             align-self: flex-end;
+            border-top-right-radius: 5px;
         }
         
         .ai-typing {
@@ -794,13 +796,14 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             gap: 10px;
+            background: rgba(10, 10, 26, 0.8);
         }
         
         .ai-input {
             flex: 1;
             padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 10px;
             color: white;
             font-size: 0.85rem;
@@ -809,6 +812,7 @@
         .ai-input:focus {
             outline: none;
             border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.12);
         }
         
         .ai-send-btn {
@@ -825,9 +829,35 @@
         
         .ai-send-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.4);
         }
         
-        /* AI FAB Button - DIUBAH JADI HELP DESK */
+        /* Quick Questions */
+        .quick-questions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 20px 15px;
+            background: rgba(10, 10, 26, 0.8);
+        }
+        
+        .quick-question {
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            color: var(--ai-color);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .quick-question:hover {
+            background: rgba(0, 102, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* AI FAB Button */
         #ai-fab-btn {
             position: fixed;
             bottom: 30px;
@@ -958,7 +988,7 @@
         @media (max-width: 480px) {
             .product-card { padding: 20px 15px; }
             .product-card h3 { font-size: 0.8rem; }
-            .ai-chat-body { height: 350px; }
+            .ai-chat-body { height: 400px; }
             #ai-fab-btn { 
                 bottom: 20px; 
                 right: 20px; 
@@ -1003,11 +1033,11 @@
             </div>
         </div>
 
-        <!-- LIVE CHAT WIDGET - TANPA API KEY -->
+        <!-- LIVE CHAT WIDGET PROFESIONAL -->
         <div id="ai-chat-container">
             <div class="ai-chat-window">
                 <div class="ai-chat-header">
-                    <h3><i class="fas fa-headset"></i> Live Help MFH Store</h3>
+                    <h3><i class="fas fa-headset"></i> MFH Store Assistant</h3>
                     <button class="ai-close-btn" onclick="closeAIChat()">
                         <i class="fas fa-times"></i>
                     </button>
@@ -1015,22 +1045,28 @@
                 <div class="ai-chat-body">
                     <div class="ai-messages" id="aiMessages">
                         <div class="ai-message bot">
-                            <strong>Halo! Saya Live Help MFH Store</strong><br><br>
-                            Saya siap membantu Anda dengan informasi produk:<br>
-                            • Rekening Digital Internasional<br>
-                            • E-Wallet Indonesia & Malaysia<br>
-                            • Crypto E-Money<br>
-                            • Jasa Followers Media<br>
-                            • Pembuatan Website<br><br>
-                            Untuk informasi lengkap, hubungi:<br>
-                            📱 WhatsApp: 0819 9859 3873<br>
-                            📧 Email: mfhstoreid@gmail.com<br>
-                            💬 Telegram: @Mfhh_Store_ID
+                            <strong>👋 Halo! Saya Asisten MFH Store</strong><br><br>
+                            Saya siap membantu Anda dengan produk digital VVIP kami.<br><br>
+                            <strong>📋 ATURAN PELAYANAN:</strong><br>
+                            • Hanya membantu produk MFH Store<br>
+                            • Tidak memberikan harga spesifik<br>
+                            • Arahkan ke Admin untuk detail<br>
+                            • Sopan & profesional<br><br>
+                            <strong>💎 Keunggulan MFH Store:</strong><br>
+                            ✓ Proses 20-30 menit<br>
+                            ✓ Full Garansi<br>
+                            ✓ Kualitas VVIP
                         </div>
                     </div>
+                    <div class="quick-questions" id="quickQuestions">
+                        <div class="quick-question" onclick="quickQuestion('produk')">Produk apa saja?</div>
+                        <div class="quick-question" onclick="quickQuestion('harga')">Info harga</div>
+                        <div class="quick-question" onclick="quickQuestion('cara order')">Cara order</div>
+                        <div class="quick-question" onclick="quickQuestion('kontak')">Kontak Admin</div>
+                    </div>
                     <div class="ai-input-area">
-                        <input type="text" class="ai-input" id="aiInput" placeholder="Tulis pertanyaan Anda..." onkeypress="if(event.key === 'Enter') sendSimpleMessage()">
-                        <button class="ai-send-btn" onclick="sendSimpleMessage()">
+                        <input type="text" class="ai-input" id="aiInput" placeholder="Tulis pertanyaan tentang produk MFH Store..." onkeypress="if(event.key === 'Enter') sendEnhancedMessage()">
+                        <button class="ai-send-btn" onclick="sendEnhancedMessage()">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
@@ -1348,25 +1384,139 @@
         });
 
         // ===========================================
-        // LIVE CHAT SIMPLE - TANPA API KEY
+        // ENHANCED AI LIVE CHAT SYSTEM
         // ===========================================
-        // Sistem pertanyaan dan jawaban sederhana untuk MFH Store
-        const faqResponses = {
-            "harga": "Untuk informasi harga terupdate, silakan hubungi Admin langsung di WhatsApp: 0819 9859 3873",
-            "cara order": "Klik tombol 'Order Now' pada produk yang Anda inginkan, lengkapi data pembelian, lalu konfirmasi ke Admin",
-            "proses": "MFH Store menawarkan proses cepat 20-30 menit, full garansi, terima jadi, dan kualitas VVIP",
-            "rekening": "Kami menyediakan rekening digital internasional: Indonesia, Malaysia, Singapura, Philips, China, dan daerah",
-            "ewallet": "Kami menyediakan E-Wallet Indonesia (DANA, GOPAY, OVO) dan Malaysia (Touch 'n Go, GrabPay)",
-            "garansi": "Semua produk MFH Store memiliki garansi penuh dan support 24/7 dari tim kami",
-            "kontak": "Hubungi Admin di:\n📱 WhatsApp: 0819 9859 3873\n📧 Email: mfhstoreid@gmail.com\n💬 Telegram: @Mfhh_Store_ID",
-            "pembayaran": "Pembayaran melalui:\n🏦 Bank Transfer (Seabank, Bank Jago, Superbank)\n📱 QRIS (DANA, OVO, GOPAY, dll)"
+        const MFHStoreAI = {
+            // ATURAN UTAMA AI
+            rules: {
+                allowedProducts: [
+                    "rekening indonesia", "bca", "bri", "mandiri", "bni", "bank", "rekening",
+                    "rekening malaysia", "maybank", "cimb", "public bank",
+                    "rekening singapura", "dbs", "posb", "ocbc",
+                    "rekening philips", "rekening china", "rekening daerah",
+                    "e-wallet indonesia", "dana", "gopay", "ovo", "shopeepay", "ewallet",
+                    "e-wallet malaysia", "touch n go", "grabpay", "boost",
+                    "rekening pt", "rekening perusahaan", "rekening koran", "bank statement",
+                    "qris", "all qris", "crypto", "binance", "indodax", "trust wallet", "kripto",
+                    "followers", "instagram", "tiktok", "youtube", "media sosial", "sosmed",
+                    "website", "pembuatan website", "landing page", "web"
+                ],
+                
+                forbiddenTopics: [
+                    "politik", "pemerintah", "hukum", "agama", "isu sensitif", "sara",
+                    "kompetitor", "toko lain", "saingan", "harga murah", "murahan",
+                    "harga spesifik", "negosiasi harga", "diskon besar", "berapa harga",
+                    "produk ilegal", "carding", "hacking", "fraud", "penipuan", "ilegal"
+                ],
+                
+                redirectKeywords: ["harga", "berapa", "nego", "discount", "murah", "mahal"]
+            },
+            
+            // RESPONSES PROFESIONAL
+            responses: {
+                greeting: "👋 **Halo! Selamat datang di MFH Store ID - Agen Digital VVIP**\n\nSaya **Asisten Digital MFH Store**, siap membantu Anda dengan informasi produk digital premium kami.\n\n💡 *Tips:* Gunakan tombol pertanyaan cepat atau tanyakan langsung tentang produk yang Anda butuhkan!",
+                
+                products: "📦 **PRODUK DIGITAL MFH STORE:**\n\n" +
+                         "**💳 REKENING DIGITAL:**\n" +
+                         "├─ Indonesia (BCA, BRI, Mandiri, BNI, dll)\n" +
+                         "├─ Malaysia (Maybank, CIMB, Public Bank)\n" +
+                         "├─ Singapura (DBS, POSB, OCBC)\n" +
+                         "├─ Philips, China, Daerah\n\n" +
+                         "**📱 E-WALLET:**\n" +
+                         "├─ Indonesia: DANA, GOPAY, OVO, ShopeePay\n" +
+                         "└─ Malaysia: Touch 'n Go, GrabPay, Boost\n\n" +
+                         "**🏢 BISNIS & LAINNYA:**\n" +
+                         "├─ Rekening PT & Rekening Koran\n" +
+                         "├─ ALL QRIS\n" +
+                         "├─ Crypto E-Money (Binance, Indodax)\n" +
+                         "├─ +Followers Media Sosial\n" +
+                         "└─ Pembuatan Website\n\n" +
+                         "⭐ **Klik tombol 'Order Now' untuk detail produk!**",
+                
+                pricing: "💰 **INFORMASI HARGA & PENAWARAN**\n\n" +
+                        "Untuk informasi harga terupdate, penawaran spesial, dan konsultasi produk:\n\n" +
+                        "📱 **Hubungi Admin Langsung:**\n" +
+                        "• WhatsApp: 0819 9859 3873\n" +
+                        "• Telegram: @Mfhh_Store_ID\n" +
+                        "• Email: mfhstoreid@gmail.com\n\n" +
+                        "✅ *Admin akan memberikan harga terbaik sesuai kebutuhan Anda!*",
+                
+                order: "🛒 **CARA ORDER MFH STORE:**\n\n" +
+                      "**Langkah 1:** Klik tombol **'Order Now'** pada produk yang diinginkan\n" +
+                      "**Langkah 2:** Lengkapi data pembelian pada form yang muncul\n" +
+                      "**Langkah 3:** Pilih metode pembayaran (Bank Transfer / QRIS)\n" +
+                      "**Langkah 4:** Lakukan pembayaran sesuai instruksi\n" +
+                      "**Langkah 5:** Konfirmasi ke Admin di WhatsApp 0819 9859 3873\n" +
+                      "**Langkah 6:** Produk akan diproses dalam **20-30 menit!**\n\n" +
+                      "📍 **Metode Pembayaran:**\n" +
+                      "🏦 Bank Transfer (Seabank, Bank Jago, Superbank)\n" +
+                      "📱 QRIS (DANA, OVO, GOPAY, ShopeePay, dll)",
+                
+                contact: "📞 **KONTAK RESMI MFH STORE:**\n\n" +
+                        "**📱 WhatsApp Admin:** 0819 9859 3873\n" +
+                        "**💬 Telegram:** @Mfhh_Store_ID\n" +
+                        "**📧 Email:** mfhstoreid@gmail.com\n" +
+                        "**📍 Lokasi:** Jl. M.H. Thamrin, Jakarta Pusat\n\n" +
+                        "⏰ **Jam Operasional:**\n" +
+                        "Senin - Minggu: 08.00 - 23.00 WIB\n\n" +
+                        "**💡 Fast Response Guaranteed!**",
+                
+                features: "⭐ **KEUNGGULAN MFH STORE:**\n\n" +
+                         "**⚡ PROSES SUPER CEPAT**\n" +
+                         "• 20-30 menit setelah konfirmasi pembayaran\n" +
+                         "• Sistem otomatis 24/7\n\n" +
+                         "**🛡️ FULL GARANSI & SUPPORT**\n" +
+                         "• Garansi hingga 30 hari\n" +
+                         "• Support 24/7 via WhatsApp\n" +
+                         "• Refund policy jelas\n\n" +
+                         "**✅ TERIMA JADI & AMAN**\n" +
+                         "• Akun siap pakai langsung\n" +
+                         "• Tidak perlu verifikasi ulang\n" +
+                         "• Data aman & terenkripsi\n\n" +
+                         "**💎 KUALITAS VVIP**\n" +
+                         "• Rekening premium verified\n" +
+                         "• E-Wallet business ready\n" +
+                         "• Followers organic quality\n\n" +
+                         "**🔵 META BUSINESS VERIFIED**\n" +
+                         "• Legalitas terjamin\n" +
+                         "• Trusted since 2020",
+                
+                forbidden: "⚠️ **PERHATIAN**\n\n" +
+                          "Sebagai Asisten MFH Store, saya **hanya membantu dengan:**\n" +
+                          "• Produk dan layanan MFH Store\n" +
+                          "• Informasi umum produk digital\n" +
+                          "• Panduan pemesanan\n\n" +
+                          "❌ **Tidak membahas:**\n" +
+                          "• Topik politik, agama, sensitif\n" +
+                          "• Produk kompetitor\n" +
+                          "• Aktivitas ilegal\n\n" +
+                          "Terima kasih atas pengertiannya! 🙏",
+                
+                unknown: "🤔 **Pertanyaan Anda di luar scope layanan saya**\n\n" +
+                        "Sebagai **Asisten Digital MFH Store**, saya khusus membantu dengan:\n" +
+                        "• Informasi produk MFH Store\n" +
+                        "• Panduan pemesanan\n" +
+                        "• Keunggulan layanan kami\n\n" +
+                        "Untuk pertanyaan lainnya, silakan hubungi Admin:\n\n" +
+                        "📱 **WhatsApp:** 0819 9859 3873\n\n" +
+                        "Atau tanyakan tentang **produk digital** yang kami sediakan! 😊"
+            },
+            
+            // VARIABLES
+            chatHistory: [],
+            priceQuestionCount: 0,
+            currentUser: null
         };
 
-        let chatHistory = [];
-
+        // ===========================================
+        // AI CHAT FUNCTIONS
+        // ===========================================
         function toggleAIChat() {
             const chatContainer = document.getElementById('ai-chat-container');
             chatContainer.classList.toggle('active');
+            if (chatContainer.classList.contains('active')) {
+                scrollChatMessages();
+            }
         }
 
         function closeAIChat() {
@@ -1374,9 +1524,21 @@
             chatContainer.classList.remove('active');
         }
 
-        function sendSimpleMessage() {
+        function quickQuestion(type) {
+            const questions = {
+                'produk': 'Apa saja produk MFH Store?',
+                'harga': 'Berapa harga rekening BCA?',
+                'cara order': 'Bagaimana cara order?',
+                'kontak': 'Kontak Admin yang aktif?'
+            };
+            
+            document.getElementById('aiInput').value = questions[type];
+            sendEnhancedMessage();
+        }
+
+        function sendEnhancedMessage() {
             const input = document.getElementById('aiInput');
-            const message = input.value.trim().toLowerCase();
+            const message = input.value.trim();
             
             if (!message) return;
             
@@ -1385,57 +1547,194 @@
             input.value = '';
             
             // Add typing indicator
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'ai-typing';
-            typingDiv.innerHTML = '<span></span><span></span><span></span>';
-            document.getElementById('aiMessages').appendChild(typingDiv);
+            showTypingIndicator();
             
-            // Scroll to bottom
-            scrollChatMessages();
-            
-            // Simulate AI thinking
+            // Simulate AI thinking delay (more professional)
             setTimeout(() => {
-                // Remove typing indicator
-                if (typingDiv.parentNode) {
-                    typingDiv.parentNode.removeChild(typingDiv);
-                }
+                removeTypingIndicator();
                 
                 // Generate response
-                let response = generateResponse(message);
+                const response = generateAIResponse(message);
                 
                 // Add AI response
                 addChatMessage(response, 'bot');
                 
+                // Track price questions
+                if (message.toLowerCase().includes('harga') || message.toLowerCase().includes('berapa')) {
+                    MFHStoreAI.priceQuestionCount++;
+                }
+                
                 // Keep history manageable
-                chatHistory.push({ question: message, answer: response });
-                if (chatHistory.length > 5) {
-                    chatHistory.shift();
+                MFHStoreAI.chatHistory.push({ question: message, answer: response });
+                if (MFHStoreAI.chatHistory.length > 10) {
+                    MFHStoreAI.chatHistory.shift();
                 }
                 
                 scrollChatMessages();
-            }, 1000);
+            }, 800);
         }
 
-        function generateResponse(message) {
-            // Check for keywords
-            for (const [keyword, response] of Object.entries(faqResponses)) {
-                if (message.includes(keyword)) {
-                    return response;
+        function generateAIResponse(message) {
+            const msg = message.toLowerCase().trim();
+            
+            // 1. Cek topik terlarang
+            for (const topic of MFHStoreAI.rules.forbiddenTopics) {
+                if (msg.includes(topic)) {
+                    return MFHStoreAI.responses.forbidden;
                 }
             }
             
-            // Default responses based on message content
-            if (message.includes('produk') || message.includes('jual') || message.includes('layanan')) {
-                return "MFH Store menyediakan:\n• Rekening Digital Internasional\n• E-Wallet Indonesia & Malaysia\n• Crypto E-Money\n• Jasa Followers Media Sosial\n• Pembuatan Website\n\nKlik 'Order Now' untuk detail produk!";
-            } else if (message.includes('lokasi') || message.includes('alamat') || message.includes('kantor')) {
-                return "Kantor Pusat MFH Store:\nJl. M.H. Thamrin, Tanah Abang\nJakarta Pusat 10230\n\nKonsultasi online via WhatsApp/Telegram";
-            } else if (message.includes('order') || message.includes('beli') || message.includes('pesan')) {
-                return "Cara Order:\n1. Klik tombol 'Order Now' pada produk\n2. Lengkapi data pembelian\n3. Lakukan pembayaran\n4. Konfirmasi ke Admin 0819 9859 3873\n5. Produk akan diproses 20-30 menit";
-            } else if (message.includes('help') || message.includes('bantuan') || message.includes('tolong')) {
-                return "Butuh bantuan? Hubungi:\n📱 WhatsApp: 0819 9859 3873\n📧 Email: mfhstoreid@gmail.com\n💬 Telegram: @Mfhh_Store_ID\n\nAtau klik tombol WhatsApp di pojok kanan bawah!";
-            } else {
-                return "Terima kasih atas pesan Anda! Untuk informasi lengkap tentang produk dan layanan MFH Store, silakan hubungi Admin langsung di WhatsApp 0819 9859 3873 atau klik tombol 'Order Now' pada produk yang Anda minati.";
+            // 2. Cek jika produk MFH Store
+            let isProductRelated = false;
+            for (const product of MFHStoreAI.rules.allowedProducts) {
+                if (msg.includes(product)) {
+                    isProductRelated = true;
+                    break;
+                }
             }
+            
+            // 3. Jika bukan tentang produk MFH Store
+            if (!isProductRelated && msg.length > 3) {
+                return MFHStoreAI.responses.unknown;
+            }
+            
+            // 4. Redirect ke Admin jika 3x tanya harga
+            if (MFHStoreAI.priceQuestionCount >= 3) {
+                return "💰 **INFORMASI HARGA LANGSUNG DARI ADMIN**\n\n" +
+                       "Untuk mendapatkan penawaran harga terbaik dan konsultasi detail:\n\n" +
+                       "📱 **Hubungi Admin Sekarang:**\n" +
+                       "https://wa.me/6281998593873\n\n" +
+                       "Admin akan merespons dalam **5 menit!** ⚡";
+            }
+            
+            // 5. Keyword-based responses
+            if (msg.includes('halo') || msg.includes('hi') || msg.includes('hai') || msg.includes('hello') || msg.includes('assalamualaikum')) {
+                return MFHStoreAI.responses.greeting;
+            }
+            
+            if (msg.includes('produk') || msg.includes('jual') || msg.includes('layanan') || msg.includes('menu') || msg.includes('apa saja')) {
+                return MFHStoreAI.responses.products;
+            }
+            
+            if (msg.includes('harga') || msg.includes('biaya') || msg.includes('tarif') || msg.includes('berapa') || msg.includes('murah') || msg.includes('mahal')) {
+                MFHStoreAI.priceQuestionCount++;
+                return MFHStoreAI.responses.pricing;
+            }
+            
+            if (msg.includes('order') || msg.includes('beli') || msg.includes('pesan') || msg.includes('cara') || msg.includes('pembelian') || msg.includes('checkout')) {
+                return MFHStoreAI.responses.order;
+            }
+            
+            if (msg.includes('kontak') || msg.includes('admin') || msg.includes('whatsapp') || msg.includes('telegram') || msg.includes('email') || msg.includes('cs')) {
+                return MFHStoreAI.responses.contact;
+            }
+            
+            if (msg.includes('keunggulan') || msg.includes('kelebihan') || msg.includes('keuntungan') || msg.includes('mengapa') || msg.includes('kenapa') || msg.includes('alasan')) {
+                return MFHStoreAI.responses.features;
+            }
+            
+            if (msg.includes('rekening') || msg.includes('bank') || msg.includes('account')) {
+                return "💳 **REKENING DIGITAL MFH STORE**\n\n" +
+                       "Kami menyediakan **rekening digital verified** untuk berbagai kebutuhan:\n\n" +
+                       "✅ **Fitur Utama:**\n" +
+                       "• Sudah terverifikasi KYC\n" +
+                       "• Bisa transfer & terima transfer\n" +
+                       "• Support mobile banking\n" +
+                       "• Data aman & terjamin\n" +
+                       "• Proses 20-30 menit\n\n" +
+                       "📍 **Pilihan Negara:**\n" +
+                       "🇮🇩 Indonesia, 🇲🇾 Malaysia, 🇸🇬 Singapura\n" +
+                       "🇵🇭 Philips, 🇨🇳 China, 🇮🇩 Daerah\n\n" +
+                       "🛒 **Klik 'Order Now' pada produk Rekening untuk memesan!**";
+            }
+            
+            if (msg.includes('ewallet') || msg.includes('wallet') || msg.includes('dana') || msg.includes('gopay') || msg.includes('ovo')) {
+                return "📱 **E-WALLET MFH STORE**\n\n" +
+                       "**E-Wallet Verified Premium:**\n\n" +
+                       "🇮🇩 **INDONESIA:**\n" +
+                       "• DANA (Reguler/Premium/Bisnis)\n" +
+                       "• GOPAY (Plus/Business)\n" +
+                       "• OVO (Premier)\n" +
+                       "• ShopeePay\n\n" +
+                       "🇲🇾 **MALAYSIA:**\n" +
+                       "• Touch 'n Go\n" +
+                       "• GrabPay\n" +
+                       "• Boost\n" +
+                       "• MAE Maybank\n\n" +
+                       "✅ **Fitur:**\n" +
+                       "✓ Sudah terverifikasi\n" +
+                       "✓ Bisa transaksi full\n" +
+                       "✓ Support QRIS\n" +
+                       "✓ Garansi 30 hari\n\n" +
+                       "⚡ **Proses: 30 menit**";
+            }
+            
+            if (msg.includes('crypto') || msg.includes('binance') || msg.includes('indodax') || msg.includes('trust wallet') || msg.includes('kripto')) {
+                return "₿ **CRYPTO E-MONEY MFH STORE**\n\n" +
+                       "**Setup & Verifikasi Akun Crypto:**\n\n" +
+                       "• Binance (Verified KYC)\n" +
+                       "• Indodax (Verified Account)\n" +
+                       "• Trust Wallet Setup\n" +
+                       "• MetaMask Configuration\n" +
+                       "• Bybit, KuCoin, OKX\n\n" +
+                       "🔒 **Keamanan Terjamin:**\n" +
+                       "✓ KYC sudah diverifikasi\n" +
+                       "✓ Bisa trading & withdraw\n" +
+                       "✓ Security 2FA aktif\n" +
+                       "✓ Support 24/7\n\n" +
+                       "💎 **Kualitas VVIP**";
+            }
+            
+            if (msg.includes('followers') || msg.includes('instagram') || msg.includes('tiktok') || msg.includes('youtube') || msg.includes('media sosial') || msg.includes('sosmed')) {
+                return "📈 **+FOLLOWERS MEDIA SOSIAL**\n\n" +
+                       "**Layanan Organic Growth:**\n\n" +
+                       "📸 Instagram:\n" +
+                       "• Followers (100-100K)\n" +
+                       "• Likes & Views\n" +
+                       "• Story Views\n\n" +
+                       "🎵 TikTok:\n" +
+                       "• Followers\n" +
+                       "• Likes\n" +
+                       "• Video Views\n\n" +
+                       "▶️ YouTube:\n" +
+                       "• Subscribers\n" +
+                       "• Views\n" +
+                       "• Watch Hours\n\n" +
+                       "✅ **Organic & Aman:**\n" +
+                       "✓ Real gradual growth\n" +
+                       "✓ No drop guarantee\n" +
+                       "✓ Safe for your account";
+            }
+            
+            if (msg.includes('website') || msg.includes('web') || msg.includes('landing page') || msg.includes('company profile')) {
+                return "🌐 **PEMBUATAN WEBSITE MFH STORE**\n\n" +
+                       "**Jasa Website Profesional:**\n\n" +
+                       "• Landing Page (Conversion Optimized)\n" +
+                       "• Website Toko Online (E-Commerce)\n" +
+                       "• Company Profile\n" +
+                       "• Website Portofolio\n" +
+                       "• Link Bio (Like Linktree)\n\n" +
+                       "🚀 **Fitur Premium:**\n" +
+                       "✓ Responsive Design\n" +
+                       "✓ SEO Friendly\n" +
+                       "✓ Fast Loading\n" +
+                       "✓ Mobile Optimized\n" +
+                       "✓ Maintenance Support\n\n" +
+                       "⏱️ **Pengerjaan: 1-3 hari**";
+            }
+            
+            // 6. Default professional response
+            const endings = [
+                "\n\n💡 **Tips:** Klik tombol 'Order Now' pada produk untuk mulai pembelian!",
+                "\n\n📱 **Butuh bantuan cepat?** WhatsApp Admin: 0819 9859 3873",
+                "\n\n⭐ **MFH Store - Trusted Since 2020**"
+            ];
+            
+            const randomEnding = endings[Math.floor(Math.random() * endings.length)];
+            
+            return "Terima kasih atas pertanyaan Anda! 🙏\n\n" +
+                   "Saya adalah **Asisten Digital MFH Store** yang siap membantu Anda dengan produk digital premium kami." +
+                   randomEnding;
         }
 
         function addChatMessage(text, sender) {
@@ -1446,6 +1745,23 @@
             messagesContainer.appendChild(messageDiv);
         }
 
+        function showTypingIndicator() {
+            const messagesContainer = document.getElementById('aiMessages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'ai-typing';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = '<span></span><span></span><span></span>';
+            messagesContainer.appendChild(typingDiv);
+            scrollChatMessages();
+        }
+
+        function removeTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
         function scrollChatMessages() {
             const messagesContainer = document.getElementById('aiMessages');
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
@@ -1454,8 +1770,15 @@
         // Enter key untuk chat input
         document.getElementById('aiInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                sendSimpleMessage();
+                sendEnhancedMessage();
             }
+        });
+
+        // Auto-focus input ketika chat dibuka
+        document.getElementById('ai-fab-btn').addEventListener('click', function() {
+            setTimeout(() => {
+                document.getElementById('aiInput').focus();
+            }, 300);
         });
 
         // ===========================================
