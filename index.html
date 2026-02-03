@@ -1046,26 +1046,24 @@
                     <div class="ai-messages" id="aiMessages">
                         <div class="ai-message bot">
                             <strong>👋 Halo! Saya Asisten MFH Store</strong><br><br>
-                            Saya siap membantu Anda dengan produk digital VVIP kami.<br><br>
-                            <strong>📋 ATURAN PELAYANAN:</strong><br>
-                            • Hanya membantu produk MFH Store<br>
-                            • Tidak memberikan harga spesifik<br>
-                            • Arahkan ke Admin untuk detail<br>
-                            • Sopan & profesional<br><br>
-                            <strong>💎 Keunggulan MFH Store:</strong><br>
-                            ✓ Proses 20-30 menit<br>
-                            ✓ Full Garansi<br>
-                            ✓ Kualitas VVIP
+                            Saya siap membantu Anda dengan **SEMUA PRODUK** digital kami.<br><br>
+                            <strong>💎 Contoh pertanyaan:</strong><br>
+                            • "Bisa buat rekening BCA?"<br>
+                            • "Sedia e-wallet DANA?"<br>
+                            • "Ada rekening Malaysia?"<br>
+                            • "Buat akun Binance?"<br>
+                            • "+Followers Instagram?"<br><br>
+                            Langsung tanyakan kebutuhan Anda! 😊
                         </div>
                     </div>
                     <div class="quick-questions" id="quickQuestions">
-                        <div class="quick-question" onclick="quickQuestion('produk')">Produk apa saja?</div>
-                        <div class="quick-question" onclick="quickQuestion('harga')">Info harga</div>
-                        <div class="quick-question" onclick="quickQuestion('cara order')">Cara order</div>
-                        <div class="quick-question" onclick="quickQuestion('kontak')">Kontak Admin</div>
+                        <div class="quick-question" onclick="quickQuestion('rekening')">Rekening BCA</div>
+                        <div class="quick-question" onclick="quickQuestion('dana')">E-Wallet DANA</div>
+                        <div class="quick-question" onclick="quickQuestion('malaysia')">Rekening Malaysia</div>
+                        <div class="quick-question" onclick="quickQuestion('crypto')">Crypto Binance</div>
                     </div>
                     <div class="ai-input-area">
-                        <input type="text" class="ai-input" id="aiInput" placeholder="Tulis pertanyaan tentang produk MFH Store..." onkeypress="if(event.key === 'Enter') sendEnhancedMessage()">
+                        <input type="text" class="ai-input" id="aiInput" placeholder="Tanya tentang produk MFH Store..." onkeypress="if(event.key === 'Enter') sendEnhancedMessage()">
                         <button class="ai-send-btn" onclick="sendEnhancedMessage()">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -1384,138 +1382,110 @@
         });
 
         // ===========================================
-        // ENHANCED AI LIVE CHAT SYSTEM
+        // AI YANG BISA JAWAB SEMUA PRODUK
         // ===========================================
         const MFHStoreAI = {
-            // ATURAN UTAMA AI
-            rules: {
-                allowedProducts: [
-                    "rekening indonesia", "bca", "bri", "mandiri", "bni", "bank", "rekening",
-                    "rekening malaysia", "maybank", "cimb", "public bank",
-                    "rekening singapura", "dbs", "posb", "ocbc",
-                    "rekening philips", "rekening china", "rekening daerah",
-                    "e-wallet indonesia", "dana", "gopay", "ovo", "shopeepay", "ewallet",
-                    "e-wallet malaysia", "touch n go", "grabpay", "boost",
-                    "rekening pt", "rekening perusahaan", "rekening koran", "bank statement",
-                    "qris", "all qris", "crypto", "binance", "indodax", "trust wallet", "kripto",
-                    "followers", "instagram", "tiktok", "youtube", "media sosial", "sosmed",
-                    "website", "pembuatan website", "landing page", "web"
-                ],
+            // RESPONS LANGSUNG UNTUK SEMUA PRODUK
+            productResponses: {
+                // ===== REKENING INDONESIA =====
+                "bca": "✅ **SEDIA REKENING BCA!**\n\nRekening BCA verified full features:\n• Mobile banking aktif\n• KYC verified\n• Bisa semua transaksi\n• Garansi 30 hari\n\n⚡ **Proses:** 20-30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Indonesia' → pilih 'BCA' → 'Order Now'",
                 
-                forbiddenTopics: [
-                    "politik", "pemerintah", "hukum", "agama", "isu sensitif", "sara",
-                    "kompetitor", "toko lain", "saingan", "harga murah", "murahan",
-                    "harga spesifik", "negosiasi harga", "diskon besar", "berapa harga",
-                    "produk ilegal", "carding", "hacking", "fraud", "penipuan", "ilegal"
-                ],
+                "bri": "✅ **SEDIA REKENING BRI!**\n\nRekening BRI siap pakai:\n• M-Banking aktif\n• Buka 24 jam\n• Support semua fitur\n• Garansi resmi\n\n⚡ **Proses:** 20-30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Indonesia' → pilih 'BRI' → 'Order Now'",
                 
-                redirectKeywords: ["harga", "berapa", "nego", "discount", "murah", "mahal"]
+                "mandiri": "✅ **SEDIA REKENING MANDIRI!**\n\nRekening Mandiri full verified:\n• Livin' by Mandiri aktif\n• All features available\n• Fast transaction\n• 30 days warranty\n\n⚡ **Proses:** 20-30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Indonesia' → pilih 'Mandiri' → 'Order Now'",
+                
+                "bni": "✅ **SEDIA REKENING BNI!**\n\nRekening BNI ready to use:\n• BNI Mobile Banking\n• All transactions enabled\n• Verified account\n• Full warranty\n\n⚡ **Proses:** 20-30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Indonesia' → pilih 'BNI' → 'Order Now'",
+                
+                "bank jago": "✅ **SEDIA REKENING BANK JAGO!**\n\nRekening Bank Jago digital:\n• App banking ready\n• Instant transfers\n• QRIS enabled\n• Modern features\n\n⚡ **Proses:** 20-30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Indonesia' → pilih 'Bank Jago' → 'Order Now'",
+                
+                "seabank": "✅ **SEDIA REKENING SEABANK!**\n\nRekening SeaBank digital:\n• Free transfers\n• High interest\n• Digital features\n• Easy to use\n\n⚡ **Proses:** 20-30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Indonesia' → pilih 'SeaBank' → 'Order Now'",
+                
+                "jenius": "✅ **SEDIA REKENING JENIUS!**\n\nRekening BTPN/Jenius:\n• Full digital banking\n• Cardless features\n• Modern interface\n• All features active\n\n⚡ **Proses:** 20-30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Indonesia' → pilih 'BTPN / Jenius' → 'Order Now'",
+                
+                "cimb": "✅ **SEDIA REKENING CIMB!**\n\nRekening CIMB Niaga:\n• CIMB Clicks access\n• All banking features\n• Verified account\n• Full warranty\n\n⚡ **Proses:** 20-30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Indonesia' → pilih 'CIMB Niaga' → 'Order Now'",
+                
+                "danamon": "✅ **SEDIA REKENING DANAMON!**\n\nRekening Danamon:\n• Mobile banking ready\n• All transactions\n• Verified account\n• Warranty included\n\n⚡ **Proses:** 20-30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Indonesia' → pilih 'Danamon' → 'Order Now'",
+                
+                // ===== E-WALLET INDONESIA =====
+                "dana": "✅ **SEDIA E-WALLET DANA!**\n\nAkun DANA verified premium:\n• **DANA Reguler:** Basic account\n• **DANA Premium:** Verified premium\n• **DANA Bisnis:** For business use\n\n**Fitur:**\n✓ Bisa transfer & terima\n✓ QRIS enabled\n✓ Top up & payment\n✓ Garansi 30 hari\n\n⚡ **Proses:** 30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'E-Wallet Indonesia' → pilih 'DANA' → 'Order Now'",
+                
+                "gopay": "✅ **SEDIA GOPAY!**\n\nAkun GOPAY verified:\n• **GOPAY Basic:** Standard account\n• **GOPAY Plus:** Enhanced features\n• **GOPAY Business:** Business account\n\n**Fitur:**\n✓ Gojek integration\n✓ QR payments\n✓ All transactions\n✓ Warranty included\n\n⚡ **Proses:** 30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'E-Wallet Indonesia' → pilih 'GOPAY' → 'Order Now'",
+                
+                "ovo": "✅ **SEDIA OVO!**\n\nAkun OVO verified:\n• **OVO Regular:** Standard account\n• **OVO Premier:** Premium features\n\n**Fitur:**\n✓ OVO payments\n✓ QRIS support\n✓ Cashback features\n✓ Full warranty\n\n⚡ **Proses:** 30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'E-Wallet Indonesia' → pilih 'OVO' → 'Order Now'",
+                
+                "shopeepay": "✅ **SEDIA SHOPEEPAY!**\n\nAkun ShopeePay verified:\n• Integrated with Shopee\n• QR payments\n• All transactions\n• Warranty 30 days\n\n⚡ **Proses:** 30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'E-Wallet Indonesia' → pilih 'ShopeePay' → 'Order Now'",
+                
+                "linkaja": "✅ **SEDIA LINKAJA!**\n\nAkun LinkAja verified:\n• Government-backed\n• QR payments\n• Bill payments\n• Full features\n\n⚡ **Proses:** 30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'E-Wallet Indonesia' → pilih 'LinkAja' → 'Order Now'",
+                
+                // ===== REKENING MALAYSIA =====
+                "maybank": "✅ **SEDIA REKENING MAYBANK MALAYSIA!**\n\nRekening Maybank MY verified:\n• Maybank2u access\n• International transfers\n• MYR currency\n• Full banking features\n\n⚡ **Proses:** 30-45 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Malaysia' → pilih 'Maybank' → 'Order Now'",
+                
+                "cimb malaysia": "✅ **SEDIA REKENING CIMB MALAYSIA!**\n\nRekening CIMB Malaysia:\n• CIMB Clicks access\n• MYR account\n• International banking\n• Verified KYC\n\n⚡ **Proses:** 30-45 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Malaysia' → pilih 'CIMB Bank MY' → 'Order Now'",
+                
+                "public bank": "✅ **SEDIA REKENING PUBLIC BANK MALAYSIA!**\n\nRekening Public Bank MY:\n• PBe access\n• MYR currency\n• Full features\n• Warranty included\n\n⚡ **Proses:** 30-45 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Malaysia' → pilih 'Public Bank' → 'Order Now'",
+                
+                // ===== REKENING SINGAPURA =====
+                "dbs": "✅ **SEDIA REKENING DBS SINGAPURA!**\n\nRekening DBS Singapore:\n• iBanking access\n• SGD currency\n• International account\n• Premium features\n\n⚡ **Proses:** 30-45 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Singapura' → pilih 'DBS Bank' → 'Order Now'",
+                
+                "posb": "✅ **SEDIA REKENING POSB SINGAPURA!**\n\nRekening POSB Singapore:\n• POSB iBanking\n• SGD account\n• DBS/POSB network\n• Full banking\n\n⚡ **Proses:** 30-45 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Singapura' → pilih 'POSB' → 'Order Now'",
+                
+                "ocbc": "✅ **SEDIA REKENING OCBC SINGAPURA!**\n\nRekening OCBC Singapore:\n• OCBC Digital\n• SGD currency\n• International transfers\n• Verified account\n\n⚡ **Proses:** 30-45 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Singapura' → pilih 'OCBC Singapore' → 'Order Now'",
+                
+                // ===== CRYPTO =====
+                "binance": "✅ **SEDIA AKUN BINANCE VERIFIED!**\n\nAkun Binance full verified:\n• KYC level 2 verified\n• All trading features\n• Withdrawal enabled\n• Security 2FA\n\n⚡ **Proses:** 45-60 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Crypto E-Money' → pilih 'Binance Verified' → 'Order Now'",
+                
+                "indodax": "✅ **SEDIA AKUN INDODAX VERIFIED!**\n\nAkun Indodax Indonesia:\n• KYC verified\n• IDR trading\n• All features active\n• Security guaranteed\n\n⚡ **Proses:** 45-60 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Crypto E-Money' → pilih 'Indodax Verified' → 'Order Now'",
+                
+                "trust wallet": "✅ **SEDIA SETUP TRUST WALLET!**\n\nSetup Trust Wallet:\n• Wallet creation\n• Security setup\n• Backup phrase\n• Multi-coin support\n\n⚡ **Proses:** 30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Crypto E-Money' → pilih 'Trust Wallet Setup' → 'Order Now'",
+                
+                // ===== FOLLOWERS =====
+                "followers": "✅ **SEDIA JASA FOLLOWERS!**\n\nTambah followers berbagai platform:\n• **Instagram** Followers & Likes\n• **TikTok** Followers & Likes\n• **YouTube** Subscribers & Views\n• **Facebook** Followers & Likes\n\n⚡ **Proses:** 1-24 jam\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik '+Followers Media' → pilih platform → 'Order Now'",
+                
+                "instagram": "✅ **SEDIA FOLLOWERS INSTAGRAM!**\n\nTambah followers Instagram:\n• Followers organic\n• Real accounts\n• Gradual growth\n• No drop guarantee\n\n📊 **Paket:** 100, 500, 1000, 5000, 10K followers\n⚡ **Proses:** 1-24 jam\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik '+Followers Media' → pilih 'Instagram Followers' → 'Order Now'",
+                
+                "tiktok": "✅ **SEDIA FOLLOWERS TIKTOK!**\n\nTambah followers TikTok:\n• Real accounts\n• Gradual process\n• Safe for account\n• Guaranteed\n\n📊 **Paket:** 100, 500, 1000, 5000 followers\n⚡ **Proses:** 1-24 jam\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik '+Followers Media' → pilih 'TikTok Followers' → 'Order Now'",
+                
+                "youtube": "✅ **SEDIA SUBSCRIBERS YOUTUBE!**\n\nTambah subscribers YouTube:\n• Real subscribers\n• Gradual growth\n• Watch time included\n• Monetization ready\n\n📊 **Paket:** 100, 500, 1000, 5000 subs\n⚡ **Proses:** 1-48 jam\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik '+Followers Media' → pilih 'YouTube Subscribers' → 'Order Now'",
+                
+                // ===== WEBSITE =====
+                "website": "✅ **SEDIA JASA PEMBUATAN WEBSITE!**\n\nPembuatan website profesional:\n• **Landing Page** - Single page\n• **Toko Online** - E-commerce\n• **Company Profile** - Business site\n• **Portfolio** - Personal site\n• **Link Bio** - Like Linktree\n\n⚡ **Pengerjaan:** 1-3 hari\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Pembuatan Website' → pilih jenis website → 'Order Now'",
+                
+                "toko online": "✅ **SEDIA WEBSITE TOKO ONLINE!**\n\nWebsite e-commerce lengkap:\n• Product catalog\n• Shopping cart\n• Payment gateway\n• Admin dashboard\n• Mobile responsive\n\n⚡ **Pengerjaan:** 2-3 hari\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Pembuatan Website' → pilih 'Website Toko Online' → 'Order Now'",
+                
+                // ===== QRIS =====
+                "qris": "✅ **SEDIA ALL QRIS!**\n\nJasa QRIS berbagai jenis:\n• **QRIS Statis** - Fixed QR\n• **QRIS Dinamis** - Dynamic amount\n• **QRIS Merchant** - Business use\n• **QRIS Dana** - DANA integration\n\n⚡ **Proses:** 20-30 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'ALL QRIS' → pilih jenis QRIS → 'Order Now'",
+                
+                // ===== REKENING LAINNYA =====
+                "rekening pt": "✅ **SEDIA REKENING PT!**\n\nRekening Perusahaan untuk bisnis:\n• PT - BCA Bisnis (KlikBCA)\n• PT - Mandiri MCM\n• PT - BNI Direct\n• PT - BRI CMS\n• PT - CIMB BizChannel\n\n⚡ **Proses:** 1-2 hari\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening PT' → pilih jenis → 'Order Now'",
+                
+                "rekening koran": "✅ **SEDIA REKENING KORAN!**\n\nBank Statement / Rekening Koran:\n• Rekening Koran BCA 1-6 bulan\n• Rekening Koran Mandiri\n• Rekening Koran BRI\n• E-Statement Bank Digital\n\n⚡ **Proses:** 1-2 jam\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Rekening Koran' → pilih jenis → 'Order Now'",
+                
+                // ===== PERTANYAAN UMUM =====
+                "aman": "🛡️ **YA, AMAN 100%!**\n\nMFH Store **Meta Business Verified** sejak 2020 dengan:\n✅ **5000+** customer puas\n✅ **Rating 4.9/5.0** ⭐⭐⭐⭐⭐\n✅ **Garansi 30 hari** uang kembali\n✅ **Support 24/7** via WhatsApp\n✅ **Legalitas jelas** & transparan\n\n**Testimoni bisa minta ke Admin!** 📱",
+                
+                "proses": "⚡ **PROSES SUPER CEPAT 20-30 MENIT!**\n\n**Timeline setelah order:**\n1. **0-5 menit:** Konfirmasi pembayaran ke Admin\n2. **5-20 menit:** Admin proses pembuatan\n3. **20-30 menit:** Produk siap & dikirim\n4. **30+ menit:** Anda terima produk\n\n**Note:** Proses mulai setelah konfirmasi pembayaran.",
+                
+                "garansi": "🛡️ **FULL GARANSI 30 HARI!**\n\n**Jaminan dari MFH Store:**\n✅ **Garansi Replace** - Jika ada masalah\n✅ **Garansi Refund** - Sesuai ketentuan\n✅ **Support 24/7** - Admin selalu standby\n✅ **Follow Up** - Pastikan produk bekerja\n\n**Cara klaim garansi:**\n1. Screenshot masalah\n2. Kirim ke WA Admin\n3. Admin proses dalam 1 jam\n4. Dapatkan solusi/replace\n\n📱 **WA Admin:** 0819 9859 3873",
+                
+                "harga": "💰 **INFO HARGA VIA ADMIN!**\n\nSilakan chat Admin untuk harga terupdate:\n\n📱 **WhatsApp:** 0819 9859 3873\n💬 **Telegram:** @Mfhh_Store_ID\n\n**Kenapa harus via Admin?**\n• Harga bisa berubah anytime\n• Ada promo khusus hari ini\n• Bisa konsultasi kebutuhan\n• Dapat penawaran terbaik!\n\n**Admin fast response!** ⚡"
             },
             
-            // RESPONSES PROFESIONAL
-            responses: {
-                greeting: "👋 **Halo! Selamat datang di MFH Store ID - Agen Digital VVIP**\n\nSaya **Asisten Digital MFH Store**, siap membantu Anda dengan informasi produk digital premium kami.\n\n💡 *Tips:* Gunakan tombol pertanyaan cepat atau tanyakan langsung tentang produk yang Anda butuhkan!",
-                
-                products: "📦 **PRODUK DIGITAL MFH STORE:**\n\n" +
-                         "**💳 REKENING DIGITAL:**\n" +
-                         "├─ Indonesia (BCA, BRI, Mandiri, BNI, dll)\n" +
-                         "├─ Malaysia (Maybank, CIMB, Public Bank)\n" +
-                         "├─ Singapura (DBS, POSB, OCBC)\n" +
-                         "├─ Philips, China, Daerah\n\n" +
-                         "**📱 E-WALLET:**\n" +
-                         "├─ Indonesia: DANA, GOPAY, OVO, ShopeePay\n" +
-                         "└─ Malaysia: Touch 'n Go, GrabPay, Boost\n\n" +
-                         "**🏢 BISNIS & LAINNYA:**\n" +
-                         "├─ Rekening PT & Rekening Koran\n" +
-                         "├─ ALL QRIS\n" +
-                         "├─ Crypto E-Money (Binance, Indodax)\n" +
-                         "├─ +Followers Media Sosial\n" +
-                         "└─ Pembuatan Website\n\n" +
-                         "⭐ **Klik tombol 'Order Now' untuk detail produk!**",
-                
-                pricing: "💰 **INFORMASI HARGA & PENAWARAN**\n\n" +
-                        "Untuk informasi harga terupdate, penawaran spesial, dan konsultasi produk:\n\n" +
-                        "📱 **Hubungi Admin Langsung:**\n" +
-                        "• WhatsApp: 0819 9859 3873\n" +
-                        "• Telegram: @Mfhh_Store_ID\n" +
-                        "• Email: mfhstoreid@gmail.com\n\n" +
-                        "✅ *Admin akan memberikan harga terbaik sesuai kebutuhan Anda!*",
-                
-                order: "🛒 **CARA ORDER MFH STORE:**\n\n" +
-                      "**Langkah 1:** Klik tombol **'Order Now'** pada produk yang diinginkan\n" +
-                      "**Langkah 2:** Lengkapi data pembelian pada form yang muncul\n" +
-                      "**Langkah 3:** Pilih metode pembayaran (Bank Transfer / QRIS)\n" +
-                      "**Langkah 4:** Lakukan pembayaran sesuai instruksi\n" +
-                      "**Langkah 5:** Konfirmasi ke Admin di WhatsApp 0819 9859 3873\n" +
-                      "**Langkah 6:** Produk akan diproses dalam **20-30 menit!**\n\n" +
-                      "📍 **Metode Pembayaran:**\n" +
-                      "🏦 Bank Transfer (Seabank, Bank Jago, Superbank)\n" +
-                      "📱 QRIS (DANA, OVO, GOPAY, ShopeePay, dll)",
-                
-                contact: "📞 **KONTAK RESMI MFH STORE:**\n\n" +
-                        "**📱 WhatsApp Admin:** 0819 9859 3873\n" +
-                        "**💬 Telegram:** @Mfhh_Store_ID\n" +
-                        "**📧 Email:** mfhstoreid@gmail.com\n" +
-                        "**📍 Lokasi:** Jl. M.H. Thamrin, Jakarta Pusat\n\n" +
-                        "⏰ **Jam Operasional:**\n" +
-                        "Senin - Minggu: 08.00 - 23.00 WIB\n\n" +
-                        "**💡 Fast Response Guaranteed!**",
-                
-                features: "⭐ **KEUNGGULAN MFH STORE:**\n\n" +
-                         "**⚡ PROSES SUPER CEPAT**\n" +
-                         "• 20-30 menit setelah konfirmasi pembayaran\n" +
-                         "• Sistem otomatis 24/7\n\n" +
-                         "**🛡️ FULL GARANSI & SUPPORT**\n" +
-                         "• Garansi hingga 30 hari\n" +
-                         "• Support 24/7 via WhatsApp\n" +
-                         "• Refund policy jelas\n\n" +
-                         "**✅ TERIMA JADI & AMAN**\n" +
-                         "• Akun siap pakai langsung\n" +
-                         "• Tidak perlu verifikasi ulang\n" +
-                         "• Data aman & terenkripsi\n\n" +
-                         "**💎 KUALITAS VVIP**\n" +
-                         "• Rekening premium verified\n" +
-                         "• E-Wallet business ready\n" +
-                         "• Followers organic quality\n\n" +
-                         "**🔵 META BUSINESS VERIFIED**\n" +
-                         "• Legalitas terjamin\n" +
-                         "• Trusted since 2020",
-                
-                forbidden: "⚠️ **PERHATIAN**\n\n" +
-                          "Sebagai Asisten MFH Store, saya **hanya membantu dengan:**\n" +
-                          "• Produk dan layanan MFH Store\n" +
-                          "• Informasi umum produk digital\n" +
-                          "• Panduan pemesanan\n\n" +
-                          "❌ **Tidak membahas:**\n" +
-                          "• Topik politik, agama, sensitif\n" +
-                          "• Produk kompetitor\n" +
-                          "• Aktivitas ilegal\n\n" +
-                          "Terima kasih atas pengertiannya! 🙏",
-                
-                unknown: "🤔 **Pertanyaan Anda di luar scope layanan saya**\n\n" +
-                        "Sebagai **Asisten Digital MFH Store**, saya khusus membantu dengan:\n" +
-                        "• Informasi produk MFH Store\n" +
-                        "• Panduan pemesanan\n" +
-                        "• Keunggulan layanan kami\n\n" +
-                        "Untuk pertanyaan lainnya, silakan hubungi Admin:\n\n" +
-                        "📱 **WhatsApp:** 0819 9859 3873\n\n" +
-                        "Atau tanyakan tentang **produk digital** yang kami sediakan! 😊"
-            },
+            // RESPONS UNTUK PERTANYAAN DI LUAR PRODUK
+            outsideProducts: "⚠️ **MAAF, DI LUAR LAYANAN KAMI**\n\nSaya hanya membantu dengan **produk MFH Store**:\n• Rekening bank & e-wallet\n• Crypto accounts\n• Followers media sosial\n• Jasa pembuatan website\n• QRIS & produk digital lainnya\n\nUntuk produk lain, silakan cari di marketplace.\n\n**Butuh produk digital?** Saya siap bantu! 😊",
             
-            // VARIABLES
-            chatHistory: [],
-            priceQuestionCount: 0,
-            currentUser: null
+            // RESPONS DEFAULT JIKA TIDAK DIKENALI
+            defaultResponse: "🤔 **SAYA KURANG PAHAM PERTANYAANNYA**\n\nCoba tanyakan dengan lebih spesifik:\n• \"Bisa buat rekening BCA?\"\n• \"Sedia e-wallet DANA?\"\n• \"Proses berapa lama?\"\n• \"Aman beli di sini?\"\n• \"Ada garansi?\"\n\nAtau gunakan tombol pertanyaan cepat di atas! ⬆️"
         };
 
         // ===========================================
-        // AI CHAT FUNCTIONS
+        // FUNGSI AI YANG LEBIH PINTAR
         // ===========================================
         function toggleAIChat() {
             const chatContainer = document.getElementById('ai-chat-container');
             chatContainer.classList.toggle('active');
             if (chatContainer.classList.contains('active')) {
                 scrollChatMessages();
+                document.getElementById('aiInput').focus();
             }
         }
 
@@ -1526,10 +1496,10 @@
 
         function quickQuestion(type) {
             const questions = {
-                'produk': 'Apa saja produk MFH Store?',
-                'harga': 'Berapa harga rekening BCA?',
-                'cara order': 'Bagaimana cara order?',
-                'kontak': 'Kontak Admin yang aktif?'
+                'rekening': 'Bisa buat rekening BCA?',
+                'dana': 'Sedia e-wallet DANA?',
+                'malaysia': 'Ada rekening Malaysia?',
+                'crypto': 'Buat akun Binance?'
             };
             
             document.getElementById('aiInput').value = questions[type];
@@ -1549,7 +1519,7 @@
             // Add typing indicator
             showTypingIndicator();
             
-            // Simulate AI thinking delay (more professional)
+            // Simulate AI thinking
             setTimeout(() => {
                 removeTypingIndicator();
                 
@@ -1559,17 +1529,6 @@
                 // Add AI response
                 addChatMessage(response, 'bot');
                 
-                // Track price questions
-                if (message.toLowerCase().includes('harga') || message.toLowerCase().includes('berapa')) {
-                    MFHStoreAI.priceQuestionCount++;
-                }
-                
-                // Keep history manageable
-                MFHStoreAI.chatHistory.push({ question: message, answer: response });
-                if (MFHStoreAI.chatHistory.length > 10) {
-                    MFHStoreAI.chatHistory.shift();
-                }
-                
                 scrollChatMessages();
             }, 800);
         }
@@ -1577,164 +1536,78 @@
         function generateAIResponse(message) {
             const msg = message.toLowerCase().trim();
             
-            // 1. Cek topik terlarang
-            for (const topic of MFHStoreAI.rules.forbiddenTopics) {
-                if (msg.includes(topic)) {
-                    return MFHStoreAI.responses.forbidden;
+            // 1. CEK PRODUK SPESIFIK DARI DATABASE
+            for (const [product, answer] of Object.entries(MFHStoreAI.productResponses)) {
+                if (msg.includes(product)) {
+                    return answer;
                 }
             }
             
-            // 2. Cek jika produk MFH Store
-            let isProductRelated = false;
-            for (const product of MFHStoreAI.rules.allowedProducts) {
-                if (msg.includes(product)) {
-                    isProductRelated = true;
+            // 2. CEK JIKA TANYA TENTANG REKENING (UMUM)
+            if (msg.includes("rekening") || msg.includes("bank") || msg.includes("account")) {
+                if (msg.includes("bisa") || msg.includes("bikin") || msg.includes("buat") || msg.includes("sedia")) {
+                    return "✅ **YA, BISA BUAT SEMUA REKENING!**\n\nKami sedia **semua bank Indonesia**:\n• **BCA, BRI, Mandiri, BNI** (semua tersedia)\n• **Bank digital:** Jago, SeaBank, Jenius, BluBCA\n• **Bank konvensional:** CIMB, Danamon, Permata, Panin\n• **Bank asing:** HSBC, Standard Chartered, DBS\n• **Bank daerah:** BJB, Bank DKI, Jateng, Jatim, dll\n\n⚡ **Proses:** 20-30 menit\n🛡️ **Full garansi** 30 hari\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Cara order:**\n1. Klik 'Rekening Indonesia'\n2. Pilih bank yang diinginkan\n3. Klik 'Order Now' & isi data\n4. Konfirmasi ke Admin";
+                }
+            }
+            
+            // 3. CEK JIKA TANYA TENTANG E-WALLET (UMUM)
+            if (msg.includes("ewallet") || msg.includes("e-wallet") || msg.includes("wallet")) {
+                if (msg.includes("bisa") || msg.includes("bikin") || msg.includes("buat") || msg.includes("sedia")) {
+                    return "✅ **YA, SEDIA SEMUA E-WALLET!**\n\nKami sedia berbagai e-wallet:\n\n**🇮🇩 INDONESIA:**\n• DANA (Reguler/Premium/Bisnis)\n• GOPAY (Plus/Business)\n• OVO (Premier)\n• ShopeePay, LinkAja\n\n**🇲🇾 MALAYSIA:**\n• Touch 'n Go\n• GrabPay\n• Boost\n• MAE Maybank\n\n⚡ **Proses:** 30 menit\n🛡️ **Garansi** 30 hari\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'E-Wallet Indonesia/Malaysia' → pilih e-wallet → 'Order Now'";
+                }
+            }
+            
+            // 4. CEK JIKA TANYA TENTANG CRYPTO (UMUM)
+            if (msg.includes("crypto") || msg.includes("kripto") || msg.includes("binance") || msg.includes("indodax")) {
+                return "✅ **YA, SEDIA AKUN CRYPTO VERIFIED!**\n\nKami sedia setup & verifikasi:\n• **Binance** (KYC level 2 verified)\n• **Indodax** (Verified account)\n• **Trust Wallet** setup\n• **MetaMask** configuration\n• **Bybit, KuCoin, OKX**\n\n🔒 **Keamanan terjamin:**\n✓ KYC sudah diverifikasi\n✓ Bisa trading & withdraw\n✓ Security 2FA aktif\n✓ Support 24/7\n\n⚡ **Proses:** 45-60 menit\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Crypto E-Money' → pilih platform → 'Order Now'";
+            }
+            
+            // 5. CEK JIKA TANYA TENTANG FOLLOWERS (UMUM)
+            if (msg.includes("followers") || msg.includes("follower") || msg.includes("like") || msg.includes("subscriber")) {
+                return "✅ **YA, SEDIA JASA FOLLOWERS!**\n\nTambah followers berbagai platform:\n\n**📸 Instagram:**\n• Followers (100-10K)\n• Likes & Views\n• Story Views\n\n**🎵 TikTok:**\n• Followers\n• Likes\n• Video Views\n\n**▶️ YouTube:**\n• Subscribers\n• Views\n• Watch Hours\n\n**✅ Keunggulan:**\n✓ Real gradual growth\n✓ No drop guarantee\n✓ Safe for your account\n✓ Organic process\n\n⚡ **Proses:** 1-24 jam\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik '+Followers Media' → pilih platform → 'Order Now'";
+            }
+            
+            // 6. CEK JIKA TANYA TENTANG WEBSITE (UMUM)
+            if (msg.includes("website") || msg.includes("web") || msg.includes("landing page")) {
+                return "✅ **YA, SEDIA JASA PEMBUATAN WEBSITE!**\n\nPembuatan website profesional:\n\n**🌐 Jenis Website:**\n• **Landing Page** - Conversion optimized\n• **Toko Online** - E-commerce complete\n• **Company Profile** - Business site\n• **Portfolio** - Personal showcase\n• **Link Bio** - Like Linktree\n\n**🚀 Fitur Premium:**\n✓ Responsive Design\n✓ SEO Friendly\n✓ Fast Loading\n✓ Mobile Optimized\n✓ Maintenance Support\n\n⚡ **Pengerjaan:** 1-3 hari\n💰 **Info harga:** Hubungi Admin 0819 9859 3873\n\n**Order:** Klik 'Pembuatan Website' → pilih jenis → 'Order Now'";
+            }
+            
+            // 7. CEK JIKA TANYA TENTANG KEAMANAN
+            if (msg.includes("aman") || msg.includes("aman ga") || msg.includes("trusted") || msg.includes("percaya")) {
+                return MFHStoreAI.productResponses["aman"];
+            }
+            
+            // 8. CEK JIKA TANYA TENTANG PROSES
+            if (msg.includes("proses") || msg.includes("lama") || msg.includes("cepat") || msg.includes("waktu")) {
+                return MFHStoreAI.productResponses["proses"];
+            }
+            
+            // 9. CEK JIKA TANYA TENTANG GARANSI
+            if (msg.includes("garansi") || msg.includes("jaminan") || msg.includes("jamin") || msg.includes("replace")) {
+                return MFHStoreAI.productResponses["garansi"];
+            }
+            
+            // 10. CEK JIKA TANYA TENTANG HARGA
+            if (msg.includes("harga") || msg.includes("berapa") || msg.includes("biaya") || msg.includes("tarif")) {
+                return MFHStoreAI.productResponses["harga"];
+            }
+            
+            // 11. CEK JIKA PERTANYAAN DI LUAR PRODUK MFH
+            const mfhKeywords = ["rekening", "bank", "ewallet", "dana", "gopay", "ovo", "crypto", "binance", "indodax", "followers", "instagram", "tiktok", "youtube", "website", "web", "qris", "malaysia", "singapore", "philips", "china", "daerah", "pt", "perusahaan", "koran", "statement"];
+            let isMfhProduct = false;
+            for (const keyword of mfhKeywords) {
+                if (msg.includes(keyword)) {
+                    isMfhProduct = true;
                     break;
                 }
             }
             
-            // 3. Jika bukan tentang produk MFH Store
-            if (!isProductRelated && msg.length > 3) {
-                return MFHStoreAI.responses.unknown;
+            if (!isMfhProduct && msg.length > 5) {
+                return MFHStoreAI.outsideProducts;
             }
             
-            // 4. Redirect ke Admin jika 3x tanya harga
-            if (MFHStoreAI.priceQuestionCount >= 3) {
-                return "💰 **INFORMASI HARGA LANGSUNG DARI ADMIN**\n\n" +
-                       "Untuk mendapatkan penawaran harga terbaik dan konsultasi detail:\n\n" +
-                       "📱 **Hubungi Admin Sekarang:**\n" +
-                       "https://wa.me/6281998593873\n\n" +
-                       "Admin akan merespons dalam **5 menit!** ⚡";
-            }
-            
-            // 5. Keyword-based responses
-            if (msg.includes('halo') || msg.includes('hi') || msg.includes('hai') || msg.includes('hello') || msg.includes('assalamualaikum')) {
-                return MFHStoreAI.responses.greeting;
-            }
-            
-            if (msg.includes('produk') || msg.includes('jual') || msg.includes('layanan') || msg.includes('menu') || msg.includes('apa saja')) {
-                return MFHStoreAI.responses.products;
-            }
-            
-            if (msg.includes('harga') || msg.includes('biaya') || msg.includes('tarif') || msg.includes('berapa') || msg.includes('murah') || msg.includes('mahal')) {
-                MFHStoreAI.priceQuestionCount++;
-                return MFHStoreAI.responses.pricing;
-            }
-            
-            if (msg.includes('order') || msg.includes('beli') || msg.includes('pesan') || msg.includes('cara') || msg.includes('pembelian') || msg.includes('checkout')) {
-                return MFHStoreAI.responses.order;
-            }
-            
-            if (msg.includes('kontak') || msg.includes('admin') || msg.includes('whatsapp') || msg.includes('telegram') || msg.includes('email') || msg.includes('cs')) {
-                return MFHStoreAI.responses.contact;
-            }
-            
-            if (msg.includes('keunggulan') || msg.includes('kelebihan') || msg.includes('keuntungan') || msg.includes('mengapa') || msg.includes('kenapa') || msg.includes('alasan')) {
-                return MFHStoreAI.responses.features;
-            }
-            
-            if (msg.includes('rekening') || msg.includes('bank') || msg.includes('account')) {
-                return "💳 **REKENING DIGITAL MFH STORE**\n\n" +
-                       "Kami menyediakan **rekening digital verified** untuk berbagai kebutuhan:\n\n" +
-                       "✅ **Fitur Utama:**\n" +
-                       "• Sudah terverifikasi KYC\n" +
-                       "• Bisa transfer & terima transfer\n" +
-                       "• Support mobile banking\n" +
-                       "• Data aman & terjamin\n" +
-                       "• Proses 20-30 menit\n\n" +
-                       "📍 **Pilihan Negara:**\n" +
-                       "🇮🇩 Indonesia, 🇲🇾 Malaysia, 🇸🇬 Singapura\n" +
-                       "🇵🇭 Philips, 🇨🇳 China, 🇮🇩 Daerah\n\n" +
-                       "🛒 **Klik 'Order Now' pada produk Rekening untuk memesan!**";
-            }
-            
-            if (msg.includes('ewallet') || msg.includes('wallet') || msg.includes('dana') || msg.includes('gopay') || msg.includes('ovo')) {
-                return "📱 **E-WALLET MFH STORE**\n\n" +
-                       "**E-Wallet Verified Premium:**\n\n" +
-                       "🇮🇩 **INDONESIA:**\n" +
-                       "• DANA (Reguler/Premium/Bisnis)\n" +
-                       "• GOPAY (Plus/Business)\n" +
-                       "• OVO (Premier)\n" +
-                       "• ShopeePay\n\n" +
-                       "🇲🇾 **MALAYSIA:**\n" +
-                       "• Touch 'n Go\n" +
-                       "• GrabPay\n" +
-                       "• Boost\n" +
-                       "• MAE Maybank\n\n" +
-                       "✅ **Fitur:**\n" +
-                       "✓ Sudah terverifikasi\n" +
-                       "✓ Bisa transaksi full\n" +
-                       "✓ Support QRIS\n" +
-                       "✓ Garansi 30 hari\n\n" +
-                       "⚡ **Proses: 30 menit**";
-            }
-            
-            if (msg.includes('crypto') || msg.includes('binance') || msg.includes('indodax') || msg.includes('trust wallet') || msg.includes('kripto')) {
-                return "₿ **CRYPTO E-MONEY MFH STORE**\n\n" +
-                       "**Setup & Verifikasi Akun Crypto:**\n\n" +
-                       "• Binance (Verified KYC)\n" +
-                       "• Indodax (Verified Account)\n" +
-                       "• Trust Wallet Setup\n" +
-                       "• MetaMask Configuration\n" +
-                       "• Bybit, KuCoin, OKX\n\n" +
-                       "🔒 **Keamanan Terjamin:**\n" +
-                       "✓ KYC sudah diverifikasi\n" +
-                       "✓ Bisa trading & withdraw\n" +
-                       "✓ Security 2FA aktif\n" +
-                       "✓ Support 24/7\n\n" +
-                       "💎 **Kualitas VVIP**";
-            }
-            
-            if (msg.includes('followers') || msg.includes('instagram') || msg.includes('tiktok') || msg.includes('youtube') || msg.includes('media sosial') || msg.includes('sosmed')) {
-                return "📈 **+FOLLOWERS MEDIA SOSIAL**\n\n" +
-                       "**Layanan Organic Growth:**\n\n" +
-                       "📸 Instagram:\n" +
-                       "• Followers (100-100K)\n" +
-                       "• Likes & Views\n" +
-                       "• Story Views\n\n" +
-                       "🎵 TikTok:\n" +
-                       "• Followers\n" +
-                       "• Likes\n" +
-                       "• Video Views\n\n" +
-                       "▶️ YouTube:\n" +
-                       "• Subscribers\n" +
-                       "• Views\n" +
-                       "• Watch Hours\n\n" +
-                       "✅ **Organic & Aman:**\n" +
-                       "✓ Real gradual growth\n" +
-                       "✓ No drop guarantee\n" +
-                       "✓ Safe for your account";
-            }
-            
-            if (msg.includes('website') || msg.includes('web') || msg.includes('landing page') || msg.includes('company profile')) {
-                return "🌐 **PEMBUATAN WEBSITE MFH STORE**\n\n" +
-                       "**Jasa Website Profesional:**\n\n" +
-                       "• Landing Page (Conversion Optimized)\n" +
-                       "• Website Toko Online (E-Commerce)\n" +
-                       "• Company Profile\n" +
-                       "• Website Portofolio\n" +
-                       "• Link Bio (Like Linktree)\n\n" +
-                       "🚀 **Fitur Premium:**\n" +
-                       "✓ Responsive Design\n" +
-                       "✓ SEO Friendly\n" +
-                       "✓ Fast Loading\n" +
-                       "✓ Mobile Optimized\n" +
-                       "✓ Maintenance Support\n\n" +
-                       "⏱️ **Pengerjaan: 1-3 hari**";
-            }
-            
-            // 6. Default professional response
-            const endings = [
-                "\n\n💡 **Tips:** Klik tombol 'Order Now' pada produk untuk mulai pembelian!",
-                "\n\n📱 **Butuh bantuan cepat?** WhatsApp Admin: 0819 9859 3873",
-                "\n\n⭐ **MFH Store - Trusted Since 2020**"
-            ];
-            
-            const randomEnding = endings[Math.floor(Math.random() * endings.length)];
-            
-            return "Terima kasih atas pertanyaan Anda! 🙏\n\n" +
-                   "Saya adalah **Asisten Digital MFH Store** yang siap membantu Anda dengan produk digital premium kami." +
-                   randomEnding;
+            // 12. DEFAULT RESPONSE
+            return MFHStoreAI.defaultResponse;
         }
 
         function addChatMessage(text, sender) {
@@ -1772,13 +1645,6 @@
             if (e.key === 'Enter') {
                 sendEnhancedMessage();
             }
-        });
-
-        // Auto-focus input ketika chat dibuka
-        document.getElementById('ai-fab-btn').addEventListener('click', function() {
-            setTimeout(() => {
-                document.getElementById('aiInput').focus();
-            }, 300);
         });
 
         // ===========================================
