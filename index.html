@@ -2074,21 +2074,210 @@
         // MAIN PAGE FUNCTIONALITY
         // ===========================================
         let currentProduct = "";
+        
+        // SUB-CATEGORIES dengan semua produk database di dalamnya
         const subCategories = {
-          "Rekening Indonesia": ["BCA Bebasan (Rp 300K)","BCA Request Nama (Rp 350K)","BRI Bebasan (Rp 300K)","BRI Request Nama (Rp 350K)","Mandiri Bebasan (Rp 300K)","Mandiri Request Nama (Rp 350K)","BNI Bebasan (Rp 300K)","BNI Request Nama (Rp 350K)","BTPN / Jenius Bebasan (Rp 300K)","Bank Jago Bebasan (Rp 300K)","SeaBank Bebasan (Rp 300K)","Allo Bank Bebasan (Rp 300K)","Blu BCA Digital Bebasan (Rp 300K)"],
-          "Rekening Malaysia": ["Maybank (Rp 400K)","CIMB Bank MY (Rp 400K)","Public Bank (Rp 400K)","RHB Bank (Rp 400K)","Hong Leong Bank (Rp 400K)"],
-          "Rekening Singapura": ["DBS Bank (Rp 400K)","POSB (Rp 400K)","OCBC Singapore (Rp 400K)","UOB Singapore (Rp 400K)"],
-          "Rekening Philips": ["BDO Unibank (Rp 400K)","Metrobank (Rp 400K)","BPI (Rp 400K)","Landbank (Rp 400K)"],
-          "Rekening China": ["ICBC (Rp 400K)","China Construction Bank (CCB) (Rp 400K)","Bank of China (BOC) (Rp 400K)"],
-          "Rekening Daerah": ["Bank BJB (Rp 300K)","Bank DKI (Rp 300K)","Bank Jateng (Rp 300K)","Bank Jatim (Rp 300K)","Bank Sumut (Rp 300K)"],
-          "E-Wallet Indonesia": ["DANA Reguler (Rp 150K)","DANA Premium (Rp 175K)","DANA Bisnis (Rp 200K)","GOPAY Basic (Rp 150K)","GOPAY Plus (Rp 175K)","GOPAY Business (Rp 200K)","OVO Regular (Rp 150K)","OVO Premier (Rp 175K)","ShopeePay (Rp 150K)","LinkAja (Rp 150K)"],
-          "E-Wallet Malaysia": ["Touch 'n Go (Rp 300K)","GrabPay MY (Rp 300K)","Boost (Rp 300K)","BigPay (Rp 300K)"],
-          "Rekening PT": ["PT - BCA Bisnis (KlikBCA) (Rp 600K)","PT - Mandiri MCM (Rp 600K)","PT - BNI Direct (Rp 600K)","PT - BRI CMS (Rp 600K)","PT - CIMB BizChannel (Rp 600K)"],
-          "Rekening Koran": ["Rekening Koran BCA 1 Bulan (Rp 50K)","Rekening Koran BCA 3 Bulan (Rp 125K)","Rekening Koran BCA 6 Bulan (Rp 250K)","Rekening Koran Mandiri 1 Bulan (Rp 50K)","Rekening Koran BRI 1 Bulan (Rp 50K)"],
-          "ALL QRIS": ["QRIS Statis (Rp 125K)","QRIS Dinamis API (Rp 150K)","QRIS Merchant Premium (Rp 150K)","QRIS Dana Bisnis (Rp 150K)"],
-          "Crypto E-Money": ["Binance Verified (Rp 200K)","Indodax Verified (Rp 200K)","Tokocrypto (Rp 200K)","Bybit (Rp 200K)","KuCoin (Rp 200K)","Trust Wallet Setup (Rp 200K)"],
-          "SUNTIK+FOLLOWERS MEDIA": ["Instagram Followers 1000 (Rp 100K)","Instagram Followers 5000 (Rp 400K)","TikTok Followers 1000 (Rp 120K)","YouTube Subscribers 1000 (Rp 300K)","Facebook Followers 1000 (Rp 150K)"],
-          "Pembuatan Link Website": ["Landing Page (Rp 300K)","Website Toko Online (Rp 400K)","Company Profile (Rp 350K)","Website Portofolio (Rp 300K)","Link Bio (Rp 200K)"]
+            "Rekening Indonesia": [
+                "BCA (Rp 300K)",
+                "BRI (Rp 300K)",
+                "Mandiri (Rp 300K)",
+                "BNI (Rp 300K)",
+                "BTPN / Jenius (Rp 300K)",
+                "Bank Jago (Rp 300K)",
+                "SeaBank (Rp 300K)",
+                "Allo Bank (Rp 300K)",
+                "Blu BCA Digital (Rp 300K)",
+                "Bank Neo Commerce (Rp 300K)",
+                "CIMB Niaga (Rp 300K)",
+                "Danamon (Rp 300K)",
+                "Permata (Rp 300K)",
+                "Panin (Rp 300K)",
+                "BSI (Rp 300K)",
+                "OCBC NISP (Rp 300K)",
+                "Maybank Indonesia (Rp 300K)",
+                "Bank Mega (Rp 300K)",
+                "DBS Indonesia (Rp 300K)",
+                "UOB Indonesia (Rp 300K)",
+                "Bukopin (Rp 300K)",
+                "Sinarmas (Rp 300K)",
+                "Muamalat (Rp 300K)",
+                "MNC Bank (Rp 300K)",
+                "Bank Victoria (Rp 300K)",
+                "Bank Ina (Rp 300K)",
+                "Bank Sampoerna (Rp 300K)",
+                "Bank Amar (Rp 300K)",
+                "Bank Nobu (Rp 300K)",
+                "Standard Chartered ID (Rp 300K)",
+                "HSBC Indonesia (Rp 300K)"
+            ],
+            "Rekening Malaysia": [
+                "Maybank (Rp 400K)",
+                "CIMB Bank MY (Rp 400K)",
+                "Public Bank (Rp 400K)",
+                "RHB Bank (Rp 400K)",
+                "Hong Leong Bank (Rp 400K)",
+                "AmBank (Rp 400K)",
+                "UOB Malaysia (Rp 400K)",
+                "HSBC Malaysia (Rp 400K)",
+                "Standard Chartered MY (Rp 400K)",
+                "Bank Islam Malaysia (Rp 400K)",
+                "Affin Bank (Rp 400K)",
+                "Alliance Bank (Rp 400K)",
+                "OCBC MY (Rp 400K)",
+                "Bank Rakyat (Rp 400K)",
+                "Bank Muamalat MY (Rp 400K)",
+                "BSN (Rp 400K)"
+            ],
+            "Rekening Singapura": [
+                "DBS Bank (Rp 400K)",
+                "POSB (Rp 400K)",
+                "OCBC Singapore (Rp 400K)",
+                "UOB Singapore (Rp 400K)",
+                "Standard Chartered SG (Rp 400K)",
+                "HSBC Singapore (Rp 400K)",
+                "Maybank SG (Rp 400K)",
+                "Citibank SG (Rp 400K)",
+                "Bank of China SG (Rp 400K)",
+                "RHB SG (Rp 400K)",
+                "CIMB SG (Rp 400K)"
+            ],
+            "Rekening Philips": [
+                "BDO Unibank (Rp 400K)",
+                "Metrobank (Rp 400K)",
+                "BPI (Rp 400K)",
+                "Landbank (Rp 400K)",
+                "Security Bank (Rp 400K)",
+                "China Bank (Rp 400K)",
+                "UnionBank (Rp 400K)",
+                "PNB (Rp 400K)",
+                "RCBC (Rp 400K)",
+                "EastWest Bank (Rp 400K)"
+            ],
+            "Rekening China": [
+                "ICBC (Rp 400K)",
+                "China Construction Bank (CCB) (Rp 400K)",
+                "Bank of China (BOC) (Rp 400K)",
+                "Agricultural Bank of China (ABC) (Rp 400K)",
+                "Bank of Communications (Rp 400K)",
+                "China Merchants Bank (Rp 400K)",
+                "Industrial Bank (Rp 400K)",
+                "Postal Savings Bank of China (Rp 400K)"
+            ],
+            "Rekening Daerah": [
+                "Bank BJB (Rp 300K)",
+                "Bank DKI (Rp 300K)",
+                "Bank Jateng (Rp 300K)",
+                "Bank Jatim (Rp 300K)",
+                "Bank Sumut (Rp 300K)",
+                "Bank Nagari (Rp 300K)",
+                "Bank Riau Kepri (Rp 300K)",
+                "Bank Sumsel Babel (Rp 300K)",
+                "Bank Lampung (Rp 300K)",
+                "Bank Jambi (Rp 300K)",
+                "Bank Bengkulu (Rp 300K)",
+                "Bank Kalbar (Rp 300K)",
+                "Bank Kaltimtara (Rp 300K)",
+                "Bank Kalsel (Rp 300K)",
+                "Bank Kalteng (Rp 300K)",
+                "Bank Sulselbar (Rp 300K)",
+                "Bank SulutGo (Rp 300K)",
+                "Bank NTB Syariah (Rp 300K)",
+                "Bank NTT (Rp 300K)",
+                "Bank Maluku Malut (Rp 300K)",
+                "Bank Papua (Rp 300K)",
+                "Bank DIY (Rp 300K)",
+                "Bank Banten (Rp 300K)",
+                "Bank Aceh Syariah (Rp 300K)"
+            ],
+            "E-Wallet Indonesia": [
+                "DANA Reguler (Rp 150K)",
+                "DANA Premium (Rp 175K)",
+                "DANA Bisnis (Rp 200K)",
+                "GOPAY (Rp 150K)",
+                "GOPAY Plus (Rp 175K)",
+                "GOPAY Business (Rp 200K)",
+                "OVO (Rp 150K)",
+                "OVO Premier (Rp 175K)",
+                "ShopeePay (Rp 150K)",
+                "LinkAja (Rp 150K)",
+                "DOKU (Rp 150K)",
+                "iSaku (Rp 150K)",
+                "Sakuku (Rp 150K)",
+                "Astrapay (Rp 150K)",
+                "FazzPay (Rp 150K)",
+                "OttoPay (Rp 150K)"
+            ],
+            "E-Wallet Malaysia": [
+                "Touch 'n Go (Rp 300K)",
+                "GrabPay MY (Rp 300K)",
+                "Boost (Rp 300K)",
+                "BigPay (Rp 300K)",
+                "Setel (Rp 300K)",
+                "ShopeePay MY (Rp 300K)",
+                "Lazada Wallet MY (Rp 300K)",
+                "MAE Maybank (Rp 300K)"
+            ],
+            "Rekening PT": [
+                "PT - BCA Bisnis (KlikBCA) (Rp 600K)",
+                "PT - Mandiri MCM (Rp 600K)",
+                "PT - BNI Direct (Rp 600K)",
+                "PT - BRI CMS (Rp 600K)",
+                "PT - CIMB BizChannel (Rp 600K)",
+                "PT - Bank Jago Business (Rp 600K)",
+                "PT - OCBC Velocity (Rp 600K)",
+                "PT - DBS IDEAL (Rp 600K)"
+            ],
+            "Rekening Koran": [
+                "Rekening Koran BCA 1 Bulan (Rp 50K)",
+                "Rekening Koran BCA 3 Bulan (Rp 125K)",
+                "Rekening Koran BCA 6 Bulan (Rp 250K)",
+                "Rekening Koran Mandiri (Rp 50K)",
+                "Rekening Koran BRI (Rp 50K)",
+                "Rekening Koran BNI (Rp 50K)",
+                "Rekening Koran CIMB (Rp 50K)",
+                "Rekening Koran Bank Daerah (Rp 50K)",
+                "E-Statement Bank Digital (Rp 50K)"
+            ],
+            "ALL QRIS": [
+                "QRIS Statis (Rp 125K)",
+                "QRIS Dinamis API (Rp 150K)",
+                "QRIS Merchant Premium (Rp 150K)",
+                "QRIS Dana Bisnis (Rp 150K)",
+                "QRIS ShopeePay (Rp 150K)",
+                "QRIS Nobu Bank (Rp 150K)"
+            ],
+            "Crypto E-Money": [
+                "Binance Verified (Rp 200K)",
+                "Indodax Verified (Rp 200K)",
+                "Tokocrypto (Rp 200K)",
+                "Bybit (Rp 200K)",
+                "KuCoin (Rp 200K)",
+                "OKX (Rp 200K)",
+                "Trust Wallet Setup (Rp 200K)",
+                "MetaMask Setup (Rp 200K)"
+            ],
+            "SUNTIK+FOLLOWERS MEDIA": [
+                "Instagram Followers (Rp 50K/1K)",
+                "Instagram Likes (Rp 30K/1K)",
+                "TikTok Followers (Rp 60K/1K)",
+                "TikTok Likes (Rp 40K/1K)",
+                "Facebook Followers (Rp 75K/1K)",
+                "Facebook Page Likes (Rp 50K/1K)",
+                "YouTube Subscribers (Rp 150K/1K)",
+                "YouTube Views (Rp 20K/1K)",
+                "Twitter (X) Followers (Rp 80K/1K)",
+                "Telegram Members (Rp 100K/1K)",
+                "Shopee Followers (Rp 60K/1K)",
+                "Tokopedia Followers (Rp 60K/1K)"
+            ],
+            "Pembuatan Link Website": [
+                "Landing Page (Rp 300K)",
+                "Website Toko Online (Rp 400K)",
+                "Company Profile (Rp 350K)",
+                "Website Portofolio (Rp 300K)",
+                "Link Bio (Rp 200K)",
+                "Website Top Up Game (Rp 350K)"
+            ]
         };
 
         // HARGA UNTUK SETIAP PRODUK
@@ -2124,7 +2313,10 @@
             select.innerHTML = '<option value="">-- Pilih Jenis Layanan --</option>';
             
             if(subCategories[name]) {
-                subCategories[name].forEach(item => {
+                // Sort items alphabetically for better UX
+                const sortedItems = [...subCategories[name]].sort((a, b) => a.localeCompare(b));
+                
+                sortedItems.forEach(item => {
                     let opt = document.createElement('option');
                     opt.value = item; 
                     opt.innerHTML = item; 
@@ -2215,13 +2407,17 @@
             item.classList.toggle('active');
         }
 
-        function submitToWA() {
+        // ===========================================
+        // FUNGSI submitToWA() YANG DIUPDATE DENGAN INTEGRASI API VPS
+        // ===========================================
+        async function submitToWA() {
             const subProduct = document.getElementById('sub-product-select').value;
             const buyerName = document.getElementById('buyer-name').value;
             const num = document.getElementById('buyer-number').value;
             const email = document.getElementById('buyer-email').value;
             const addr = document.getElementById('buyer-address').value;
             
+            // Validasi input
             if(!subProduct || !buyerName || !num) { 
                 alert("Mohon lengkapi data wajib!\n- Jenis Layanan\n- Nama Pembeli\n- Nomor WhatsApp"); 
                 return; 
@@ -2233,53 +2429,190 @@
                 return;
             }
             
-            // Determine type for formatting
-            let typeText = "";
-            let formatData = "";
-            
-            if (currentProduct.includes("Rekening") && !currentProduct.includes("Koran") && !currentProduct.includes("PT")) {
-                if (subProduct.toLowerCase().includes('bebasan')) {
-                    typeText = "Rekening Bebasan";
-                    formatData = `\n📋 FORMAT DATA BEBASAN:\n• Pilih data: Cewek / Cowok\n• Nama Bank:\n• No:\n• Gmail:\n• Alamat:`;
-                } else if (subProduct.toLowerCase().includes('request')) {
-                    typeText = "Rekening Request Nama";
-                    formatData = `\n📋 FORMAT DATA REQUEST NAMA:\n• Nama Rekening:\n• Nama Bank:\n• No:\n• Gmail:\n• Alamat:`;
-                }
+            // Extract harga dari subProduct
+            let harga = 300000; // default
+            const priceMatch = subProduct.match(/Rp\s*([\d.,]+)K/);
+            if (priceMatch) {
+                harga = parseInt(priceMatch[1]) * 1000;
+            } else if (productPrices[currentProduct]) {
+                harga = productPrices[currentProduct].min;
             }
             
-            const msg = `⚡ *KONFIRMASI PEMBAYARAN - MFH STORE* ⚡\n` + 
-                        `─────────────────────────────\n` + 
-                        `🛒 *Kategori* : ${currentProduct}\n` + 
-                        `🏦 *Jenis Layanan* : ${subProduct}\n` + 
-                        `${typeText ? `📌 *Tipe* : ${typeText}\n` : ''}` +
-                        `👫 *Nama* : ${buyerName}\n` + 
-                        `📱 *WhatsApp* : ${num}\n` + 
-                        `📧 *Email* : ${email || '-'}\n` + 
-                        `📍 *Keterangan* : ${addr || '-'}\n` + 
-                        `─────────────────────────────\n` + 
-                        `${formatData}\n\n` +
-                        `💡 *SOP PENDAFTARAN:*\n` +
-                        `1. Siapkan No HP & Gmail Aktif\n` +
-                        `2. Pulsa min. 5rb & Kartu di SIM 1\n` +
-                        `3. Stay standby untuk kode verifikasi\n` +
-                        `4. User ID sesuai permintaan Team Agen\n` +
-                        `5. Cek kembali No & Gmail (tidak bisa diubah)\n\n` +
-                        `💰 *SISTEM PAY:*\n` +
-                        `Akun jadi baru BAYAR LUNAS. No & Gmail sudah di tangan pembeli, Password & PIN kami tahan dulu. Setelah lunas, langsung kami serahkan.\n\n` +
-                        `⏰ *ESTIMASI:* 20-30 menit\n` +
-                        `🛡️ *GARANSI:* 30 hari\n` +
-                        `📞 *TESTIMONI:* https://whatsapp.com/channel/0029Vb6rUD8A2pLAZZjfQ91K\n\n` +
-                        `*STATUS: SUDAH TRANSFER / SIAP BAYAR SETELAH AKUN JADI*`;
-            
-            const whatsappUrl = `https://wa.me/6281998593873?text=${encodeURIComponent(msg)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            // Update progress bar
-            document.querySelectorAll('.checkout-progress .step').forEach((step, index) => {
-                step.classList.remove('active');
-                if (index === 2) step.classList.add('active');
-            });
+            // ======================= KIRIM KE API VPS =======================
+            try {
+                // Tampilkan loading
+                const submitBtn = document.querySelector('#payment-section .btn-pay');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> MENGIRIM KE SERVER...';
+                submitBtn.disabled = true;
+                
+                // Data untuk dikirim ke API
+                const orderData = {
+                    nama: buyerName,
+                    wa: cleanNum,
+                    email: email || '',
+                    produk: `${currentProduct} - ${subProduct}`,
+                    harga: harga,
+                    catatan: addr || ''
+                };
+                
+                // Kirim ke API VPS
+                const response = await fetch('http://103.67.244.168:3000/api/order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.sukses) {
+                    // Order berhasil disimpan di database
+                    
+                    // Determine type for WhatsApp formatting
+                    let typeText = "";
+                    let formatData = "";
+                    
+                    if (currentProduct.includes("Rekening") && !currentProduct.includes("Koran") && !currentProduct.includes("PT")) {
+                        if (subProduct.toLowerCase().includes('bebasan')) {
+                            typeText = "Rekening Bebasan";
+                            formatData = `\n📋 FORMAT DATA BEBASAN:\n• Pilih data: Cewek / Cowok\n• Nama Bank:\n• No:\n• Gmail:\n• Alamat:`;
+                        } else if (subProduct.toLowerCase().includes('request')) {
+                            typeText = "Rekening Request Nama";
+                            formatData = `\n📋 FORMAT DATA REQUEST NAMA:\n• Nama Rekening:\n• Nama Bank:\n• No:\n• Gmail:\n• Alamat:`;
+                        }
+                    }
+                    
+                    // Format pesan WhatsApp dengan ID order dari API
+                    const msg = `⚡ *KONFIRMASI PEMBAYARAN - MFH STORE* ⚡\n` + 
+                                `─────────────────────────────\n` + 
+                                `📋 *ORDER ID:* #${result.data.order_id}\n` +
+                                `🛒 *Kategori* : ${currentProduct}\n` + 
+                                `🏦 *Jenis Layanan* : ${subProduct}\n` + 
+                                `${typeText ? `📌 *Tipe* : ${typeText}\n` : ''}` +
+                                `👫 *Nama* : ${buyerName}\n` + 
+                                `📱 *WhatsApp* : ${cleanNum}\n` + 
+                                `📧 *Email* : ${email || '-'}\n` + 
+                                `📍 *Keterangan* : ${addr || '-'}\n` + 
+                                `─────────────────────────────\n` + 
+                                `${formatData}\n\n` +
+                                `💡 *SOP PENDAFTARAN:*\n` +
+                                `1. Siapkan No HP & Gmail Aktif\n` +
+                                `2. Pulsa min. 5rb & Kartu di SIM 1\n` +
+                                `3. Stay standby untuk kode verifikasi\n` +
+                                `4. User ID sesuai permintaan Team Agen\n` +
+                                `5. Cek kembali No & Gmail (tidak bisa diubah)\n\n` +
+                                `💰 *SISTEM PAY:*\n` +
+                                `Akun jadi baru BAYAR LUNAS. No & Gmail sudah di tangan pembeli, Password & PIN kami tahan dulu. Setelah lunas, langsung kami serahkan.\n\n` +
+                                `⏰ *ESTIMASI:* 20-30 menit\n` +
+                                `🛡️ *GARANSI:* 30 hari\n` +
+                                `📊 *STATUS ORDER:* Diterima (ID: #${result.data.order_id})\n` +
+                                `📞 *TESTIMONI:* https://whatsapp.com/channel/0029Vb6rUD8A2pLAZZjfQ91K\n\n` +
+                                `*STATUS: SUDAH TRANSFER / SIAP BAYAR SETELAH AKUN JADI*`;
+                    
+                    // Buka WhatsApp dengan pesan
+                    const whatsappUrl = `https://wa.me/6281998593873?text=${encodeURIComponent(msg)}`;
+                    window.open(whatsappUrl, '_blank');
+                    
+                    // Tampilkan notifikasi sukses
+                    alert(`✅ ORDER BERHASIL DITERIMA!\n\nOrder ID: #${result.data.order_id}\nData sudah tersimpan di sistem kami.`);
+                    
+                    // Update progress bar
+                    document.querySelectorAll('.checkout-progress .step').forEach((step, index) => {
+                        step.classList.remove('active');
+                        if (index === 2) step.classList.add('active');
+                    });
+                    
+                } else {
+                    // Error dari API
+                    alert(`❌ GAGAL MENYIMPAN ORDER:\n${result.error || 'Server error'}`);
+                }
+                
+            } catch (error) {
+                console.error('API Error:', error);
+                alert('❌ GAGAL TERHUBUNG KE SERVER. Silakan coba lagi atau langsung hubungi WhatsApp Admin.');
+                
+                // Fallback ke WhatsApp langsung jika API error
+                const msg = `⚡ *KONFIRMASI PEMBAYARAN - MFH STORE* ⚡\n` + 
+                            `🛒 *Kategori* : ${currentProduct}\n` + 
+                            `🏦 *Jenis Layanan* : ${subProduct}\n` + 
+                            `👫 *Nama* : ${buyerName}\n` + 
+                            `📱 *WhatsApp* : ${cleanNum}`;
+                
+                const whatsappUrl = `https://wa.me/6281998593873?text=${encodeURIComponent(msg)}`;
+                window.open(whatsappUrl, '_blank');
+                
+            } finally {
+                // Reset tombol
+                const submitBtn = document.querySelector('#payment-section .btn-pay');
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<i class="fab fa-whatsapp"></i> KONFIRMASI SEKARANG';
+                    submitBtn.disabled = false;
+                }
+            }
         }
+
+        // ===========================================
+        // FUNGSI TAMBAHAN UNTUK MONITORING
+        // ===========================================
+
+        // Fungsi untuk cek order (bisa dipanggil dari console browser)
+        async function checkMFHOrders() {
+            try {
+                const response = await fetch('http://103.67.244.168:3000/api/orders?limit=5');
+                const result = await response.json();
+                
+                if (result.sukses) {
+                    console.log('📊 ORDER TERBARU:', result.orders);
+                    alert(`📦 ${result.jumlah} order ditemukan\nLihat console untuk detail.`);
+                    return result.orders;
+                }
+            } catch (error) {
+                console.error('Check orders error:', error);
+                return null;
+            }
+        }
+
+        // Fungsi untuk cek statistik
+        async function checkMFHStats() {
+            try {
+                const response = await fetch('http://103.67.244.168:3000/api/stats');
+                const result = await response.json();
+                
+                if (result.sukses) {
+                    const stats = result.stats;
+                    const msg = `📊 STATISTIK MFH STORE:\n
+Total Order: ${stats.total_orders}
+Pending: ${stats.pending}
+Processing: ${stats.processing}
+Completed: ${stats.completed}
+Total Revenue: Rp ${stats.total_revenue ? stats.total_revenue.toLocaleString('id-ID') : '0'}`;
+                    
+                    alert(msg);
+                    return stats;
+                }
+            } catch (error) {
+                console.error('Check stats error:', error);
+                return null;
+            }
+        }
+
+        // Auto-test koneksi API saat page load (opsional)
+        window.addEventListener('load', function() {
+            // Test API connection setelah 3 detik
+            setTimeout(async () => {
+                try {
+                    const response = await fetch('http://103.67.244.168:3000/api/test');
+                    const result = await response.json();
+                    if (result.sukses) {
+                        console.log('✅ API Connected:', result.pesan);
+                    }
+                } catch (error) {
+                    console.warn('⚠️ API Not Reachable, using WhatsApp fallback');
+                }
+            }, 3000);
+        });
     </script>
 </body>
 </html>
