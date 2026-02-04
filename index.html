@@ -1,42 +1,54 @@
-function submitToWA() {
-    const subProduct = document.getElementById('sub-product-select').value;
-    const buyerName = document.getElementById('buyer-name').value;
-    const num = document.getElementById('buyer-number').value;
-    const email = document.getElementById('buyer-email').value;
-    const addr = document.getElementById('buyer-address').value;
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFH STORE ID</title>
+    <style>
+        body { font-family: Arial; background: #0a0a1a; color: white; padding: 20px; }
+        .btn { background: #0066ff; color: white; padding: 15px; border: none; border-radius: 10px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>MFH STORE ID</h1>
+    <p>AGEN DIGITAL VVIP</p>
     
-    // Validasi sederhana
-    if(!subProduct || !buyerName || !num) { 
-        alert("Isi data wajib: Nama, WhatsApp, dan Pilih Layanan"); 
-        return; 
-    }
+    <div>
+        <button class="btn" onclick="orderProduct('Rekening BCA')">Rekening BCA</button>
+        <button class="btn" onclick="orderProduct('E-Wallet DANA')">E-Wallet DANA</button>
+        <button class="btn" onclick="orderProduct('Rekening Malaysia')">Rekening Malaysia</button>
+    </div>
     
-    const cleanNum = num.replace(/\D/g, '');
+    <div id="orderForm" style="display:none; margin-top: 20px;">
+        <input type="text" id="nama" placeholder="Nama" style="padding:10px; width:100%; margin:5px;">
+        <input type="text" id="wa" placeholder="WhatsApp" style="padding:10px; width:100%; margin:5px;">
+        <button class="btn" onclick="sendToWhatsApp()">KIRIM KE WHATSAPP</button>
+    </div>
     
-    // Format pesan SIMPLE
-    const msg = `ORDER MFH STORE\n` +
-                `Produk: ${currentProduct}\n` +
-                `Layanan: ${subProduct}\n` +
-                `Nama: ${buyerName}\n` +
-                `WA: ${cleanNum}\n` +
-                `Email: ${email || '-'}\n` +
-                `Catatan: ${addr || '-'}\n\n` +
-                `Siap proses 20-30 menit!`;
-    
-    const whatsappUrl = `https://wa.me/6281998593873?text=${encodeURIComponent(msg)}`;
-    window.open(whatsappUrl, '_blank');
-    
-    // Update UI
-    document.querySelectorAll('.checkout-progress .step').forEach((step, index) => {
-        step.classList.remove('active');
-        if (index === 2) step.classList.add('active');
-    });
-    
-    // Reset form setelah 2 detik
-    setTimeout(() => {
-        document.getElementById('buyer-name').value = '';
-        document.getElementById('buyer-number').value = '';
-        document.getElementById('buyer-email').value = '';
-        document.getElementById('buyer-address').value = '';
-    }, 2000);
-}
+    <script>
+        let selectedProduct = '';
+        
+        function orderProduct(product) {
+            selectedProduct = product;
+            document.getElementById('orderForm').style.display = 'block';
+            alert('Pilih: ' + product);
+        }
+        
+        function sendToWhatsApp() {
+            const nama = document.getElementById('nama').value;
+            const wa = document.getElementById('wa').value;
+            
+            if(!nama || !wa) {
+                alert('Isi nama dan WhatsApp!');
+                return;
+            }
+            
+            const msg = `ORDER MFH STORE\nProduk: ${selectedProduct}\nNama: ${nama}\nWA: ${wa}`;
+            const url = `https://wa.me/6281998593873?text=${encodeURIComponent(msg)}`;
+            
+            window.open(url, '_blank');
+            alert('Membuka WhatsApp...');
+        }
+    </script>
+</body>
+</html>
