@@ -5,52 +5,38 @@ function submitToWA() {
     const email = document.getElementById('buyer-email').value;
     const addr = document.getElementById('buyer-address').value;
     
-    // Validasi
+    // Validasi sederhana
     if(!subProduct || !buyerName || !num) { 
-        alert("Mohon lengkapi data wajib!\n- Jenis Layanan\n- Nama Pembeli\n- Nomor WhatsApp"); 
+        alert("Isi data wajib: Nama, WhatsApp, dan Pilih Layanan"); 
         return; 
     }
     
     const cleanNum = num.replace(/\D/g, '');
     
-    // Format WhatsApp message
-    let formatData = "";
-    if (currentProduct.includes("Rekening") && !currentProduct.includes("Koran")) {
-        if (subProduct.toLowerCase().includes('bebasan')) {
-            formatData = `\n📋 FORMAT DATA BEBASAN:\n• Pilih data: Cewek / Cowok\n• Nama Bank:\n• No:\n• Gmail:\n• Alamat:`;
-        } else {
-            formatData = `\n📋 FORMAT DATA:\n• Nama Rekening:\n• Nama Bank:\n• No:\n• Gmail:\n• Alamat:`;
-        }
-    }
-    
-    const msg = `⚡ *KONFIRMASI PEMBAYARAN - MFH STORE* ⚡\n` + 
-                `─────────────────────────────\n` + 
-                `🛒 *Kategori* : ${currentProduct}\n` + 
-                `🏦 *Jenis Layanan* : ${subProduct}\n` + 
-                `👫 *Nama* : ${buyerName}\n` + 
-                `📱 *WhatsApp* : ${cleanNum}\n` + 
-                `📧 *Email* : ${email || '-'}\n` + 
-                `📍 *Keterangan* : ${addr || '-'}\n` + 
-                `─────────────────────────────\n` + 
-                `${formatData}\n\n` +
-                `💡 *SOP PENDAFTARAN:*\n` +
-                `1. Siapkan No HP & Gmail Aktif\n` +
-                `2. Pulsa min. 5rb & Kartu di SIM 1\n` +
-                `3. Stay standby untuk kode verifikasi\n` +
-                `4. User ID sesuai permintaan Team Agen\n` +
-                `5. Cek kembali No & Gmail (tidak bisa diubah)\n\n` +
-                `💰 *SISTEM PAY:*\n` +
-                `Akun jadi baru BAYAR LUNAS\n\n` +
-                `⏰ *ESTIMASI:* 20-30 menit\n` +
-                `🛡️ *GARANSI:* 30 hari\n` +
-                `*STATUS: SIAP BAYAR SETELAH AKUN JADI*`;
+    // Format pesan SIMPLE
+    const msg = `ORDER MFH STORE\n` +
+                `Produk: ${currentProduct}\n` +
+                `Layanan: ${subProduct}\n` +
+                `Nama: ${buyerName}\n` +
+                `WA: ${cleanNum}\n` +
+                `Email: ${email || '-'}\n` +
+                `Catatan: ${addr || '-'}\n\n` +
+                `Siap proses 20-30 menit!`;
     
     const whatsappUrl = `https://wa.me/6281998593873?text=${encodeURIComponent(msg)}`;
     window.open(whatsappUrl, '_blank');
     
-    // Update progress
+    // Update UI
     document.querySelectorAll('.checkout-progress .step').forEach((step, index) => {
         step.classList.remove('active');
         if (index === 2) step.classList.add('active');
     });
+    
+    // Reset form setelah 2 detik
+    setTimeout(() => {
+        document.getElementById('buyer-name').value = '';
+        document.getElementById('buyer-number').value = '';
+        document.getElementById('buyer-email').value = '';
+        document.getElementById('buyer-address').value = '';
+    }, 2000);
 }
