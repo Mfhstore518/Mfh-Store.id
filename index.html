@@ -1194,6 +1194,96 @@
             transform: scale(1.05);
         }
         
+        /* ===========================================
+           MFH DASHBOARD NOTIFICATION STYLES
+        =========================================== */
+        @keyframes mfhSlideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes mfhSlideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
+        #mfh-notifications {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 99999;
+            max-width: 350px;
+        }
+        
+        .mfh-notification {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #0066ff;
+            animation: mfhSlideIn 0.3s ease-out;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 350px;
+        }
+        
+        .mfh-notification.success { border-color: #00ffaa; background: rgba(0, 40, 30, 0.95); }
+        .mfh-notification.error { border-color: #ff4444; background: rgba(40, 0, 0, 0.95); }
+        .mfh-notification.info { border-color: #0066ff; background: rgba(0, 20, 40, 0.95); }
+        
+        .mfh-notification i {
+            font-size: 20px;
+        }
+        
+        .mfh-notification.success i { color: #00ffaa; }
+        .mfh-notification.error i { color: #ff4444; }
+        .mfh-notification.info i { color: #0066ff; }
+        
+        .mfh-notification-content {
+            flex: 1;
+        }
+        
+        .mfh-notification-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .mfh-notification-close:hover {
+            opacity: 1;
+        }
+        
+        .dashboard-status {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            background: rgba(0, 102, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid #0066ff;
+            border-radius: 10px;
+            padding: 8px 15px;
+            font-size: 12px;
+            color: #00ccff;
+            z-index: 9998;
+            display: none;
+        }
+        
         /* RESPONSIVE FIXES */
         @media (max-width: 1100px) {
             .product-grid { grid-template-columns: repeat(4, 1fr); }
@@ -1220,6 +1310,14 @@
                 width: calc(100vw - 40px);
                 right: 20px;
                 bottom: 80px;
+            }
+            #mfh-notifications {
+                top: 10px;
+                right: 10px;
+                max-width: calc(100vw - 20px);
+            }
+            .mfh-notification {
+                max-width: 100%;
             }
         }
 
@@ -2194,7 +2292,272 @@
             item.classList.toggle('active');
         }
 
-        function submitToWA() {
+        // ===========================================
+        // MFH DASHBOARD WEBHOOK INTEGRATION - LENGKAP
+        // ===========================================
+        const MFH_DASHBOARD = {
+            // === KONFIGURASI (SESUAIKAN DENGAN IP TERMUX ANDA) ===
+            IP: "10.178.188.204",    // Ganti dengan IP dari ifconfig
+            PORT: "8080",            // Port dashboard (8080 atau 8082)
+            ENABLED: true,           // Set false untuk matikan sementara
+            
+            // === FUNGSI UTAMA ===
+            getURL() {
+                return `http://${this.IP}:${this.PORT}`;
+            },
+            
+            getWebhookURL() {
+                return `${this.getURL()}/api/webhook`;
+            },
+            
+            getDashboardURL() {
+                return `${this.getURL()}/dashboard`;
+            },
+            
+            async checkConnection() {
+                try {
+                    const response = await fetch(this.getURL() + '/api/stats', {
+                        method: 'GET',
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                    return response.ok;
+                } catch {
+                    return false;
+                }
+            },
+            
+            async sendOrder(product, customer, phone, email, notes = "") {
+                if (!this.ENABLED) {
+                    console.log('MFH Dashboard: Disabled');
+                    return { success: false, error: 'Dashboard disabled' };
+                }
+                
+                try {
+                    const orderData = {
+                        product: product,
+                        customer: customer,
+                        phone: phone,
+                        email: email || "",
+                        amount: 0,
+                        notes: notes,
+                        timestamp: new Date().toISOString(),
+                        source: "mfhstore.id"
+                    };
+                    
+                    console.log('📤 MFH Dashboard: Sending order:', orderData);
+                    
+                    const response = await fetch(this.getWebhookURL(), {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(orderData)
+                    });
+                    
+                    const result = await response.json();
+                    console.log('📥 MFH Dashboard Response:', result);
+                    
+                    if (result.success) {
+                        this.showNotification(
+                            `✅ Order berhasil dikirim ke dashboard!<br><small>ID: ${result.order_id}</small>`,
+                            'success'
+                        );
+                        
+                        // Simpan ke localStorage untuk history
+                        this.saveOrderHistory(result.order_id, orderData);
+                        
+                        return result;
+                    } else {
+                        this.showNotification(
+                            `❌ Gagal mengirim ke dashboard<br><small>${result.error || 'Error unknown'}</small>`,
+                            'error'
+                        );
+                        return result;
+                    }
+                } catch (error) {
+                    console.error('❌ MFH Dashboard Error:', error);
+                    this.showNotification(
+                        '⚠️ Gagal terhubung ke dashboard<br><small>Cek koneksi atau IP address</small>',
+                        'error'
+                    );
+                    return { success: false, error: error.message };
+                }
+            },
+            
+            // === FUNGSI BANTUAN ===
+            showNotification(message, type = 'info', duration = 5000) {
+                // Buat container jika belum ada
+                let container = document.getElementById('mfh-notifications');
+                if (!container) {
+                    container = document.createElement('div');
+                    container.id = 'mfh-notifications';
+                    document.body.appendChild(container);
+                }
+                
+                // Buat notifikasi
+                const notification = document.createElement('div');
+                notification.className = `mfh-notification ${type}`;
+                
+                const icon = type === 'success' ? 'fa-check-circle' : 
+                            type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+                
+                notification.innerHTML = `
+                    <i class="fas ${icon}"></i>
+                    <div class="mfh-notification-content">${message}</div>
+                    <button class="mfh-notification-close" onclick="this.parentElement.remove()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                
+                container.appendChild(notification);
+                
+                // Auto remove setelah beberapa detik
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.style.animation = 'mfhSlideOut 0.3s ease-out';
+                        setTimeout(() => notification.remove(), 300);
+                    }
+                }, duration);
+            },
+            
+            saveOrderHistory(orderId, orderData) {
+                try {
+                    const history = JSON.parse(localStorage.getItem('mfh_orders') || '[]');
+                    history.unshift({
+                        id: orderId,
+                        data: orderData,
+                        date: new Date().toISOString(),
+                        synced: true
+                    });
+                    
+                    // Simpan max 50 order terakhir
+                    if (history.length > 50) history.length = 50;
+                    
+                    localStorage.setItem('mfh_orders', JSON.stringify(history));
+                } catch (e) {
+                    console.error('Gagal menyimpan history:', e);
+                }
+            },
+            
+            showDashboardStatus() {
+                const statusDiv = document.createElement('div');
+                statusDiv.className = 'dashboard-status';
+                statusDiv.id = 'dashboard-status';
+                statusDiv.innerHTML = `
+                    <i class="fas fa-sync-alt fa-spin"></i>
+                    <span>Checking dashboard...</span>
+                `;
+                document.body.appendChild(statusDiv);
+                
+                // Cek koneksi setiap 30 detik
+                this.updateConnectionStatus();
+                setInterval(() => this.updateConnectionStatus(), 30000);
+            },
+            
+            async updateConnectionStatus() {
+                const statusDiv = document.getElementById('dashboard-status');
+                if (!statusDiv) return;
+                
+                const isConnected = await this.checkConnection();
+                
+                if (isConnected) {
+                    statusDiv.innerHTML = `
+                        <i class="fas fa-check-circle" style="color: #00ffaa;"></i>
+                        <span>Dashboard: <a href="${this.getURL()}" target="_blank" style="color: #00ccff; text-decoration: none;">Online</a></span>
+                    `;
+                    statusDiv.style.display = 'block';
+                    statusDiv.style.borderColor = '#00ffaa';
+                } else {
+                    statusDiv.innerHTML = `
+                        <i class="fas fa-times-circle" style="color: #ff4444;"></i>
+                        <span>Dashboard: Offline</span>
+                    `;
+                    statusDiv.style.display = 'block';
+                    statusDiv.style.borderColor = '#ff4444';
+                }
+            },
+            
+            // === INTEGRASI DENGAN WEBSITE ===
+            integrateWithWebsite() {
+                if (!this.ENABLED) {
+                    console.log('MFH Dashboard: Integration disabled');
+                    return;
+                }
+                
+                console.log('🚀 MFH Dashboard Integration Starting...');
+                
+                // 1. Simpan fungsi submitToWA asli
+                const originalSubmitToWA = window.submitToWA;
+                
+                // 2. Override fungsi submitToWA
+                window.submitToWA = function() {
+                    // Validasi data terlebih dahulu
+                    const subProduct = document.getElementById('sub-product-select').value;
+                    const buyerName = document.getElementById('buyer-name').value;
+                    const num = document.getElementById('buyer-number').value;
+                    const email = document.getElementById('buyer-email').value;
+                    const addr = document.getElementById('buyer-address').value;
+                    
+                    if(!subProduct || !buyerName || !num) { 
+                        alert("Mohon lengkapi data wajib!\n- Jenis Layanan\n- Nama Pembeli\n- Nomor WhatsApp"); 
+                        return; 
+                    }
+                    
+                    const cleanNum = num.replace(/\D/g, '');
+                    if (cleanNum.length < 10) {
+                        alert("Nomor WhatsApp tidak valid!");
+                        return;
+                    }
+                    
+                    // Kirim ke dashboard (async, tidak blocking)
+                    const notes = `Sub-produk: ${subProduct}\nAlamat/Keterangan: ${addr || '-'}`;
+                    
+                    MFH_DASHBOARD.sendOrder(
+                        currentProduct,  // Dari variabel global website
+                        buyerName,
+                        cleanNum,
+                        email,
+                        notes
+                    ).then(result => {
+                        console.log('Dashboard sync result:', result);
+                    }).catch(error => {
+                        console.error('Dashboard sync error:', error);
+                    });
+                    
+                    // Lanjutkan ke WhatsApp seperti biasa
+                    return originalSubmitToWA();
+                };
+                
+                // 3. Tampilkan status dashboard
+                setTimeout(() => this.showDashboardStatus(), 2000);
+                
+                // 4. Cek koneksi saat load
+                this.checkConnection().then(connected => {
+                    if (connected) {
+                        console.log('✅ MFH Dashboard Connected!');
+                        this.showNotification(
+                            '🔗 Dashboard terhubung!<br><small>Order akan otomatis tersimpan</small>',
+                            'success',
+                            3000
+                        );
+                    } else {
+                        console.log('⚠️ MFH Dashboard Not Connected');
+                        this.showNotification(
+                            '⚠️ Dashboard offline<br><small>Order tidak akan tersimpan di dashboard</small>',
+                            'error',
+                            5000
+                        );
+                    }
+                });
+                
+                console.log('✅ MFH Dashboard Integration Complete!');
+                console.log('📊 Dashboard URL:', this.getURL());
+                console.log('🔗 Webhook URL:', this.getWebhookURL());
+            }
+        };
+
+        // Simpan fungsi submitToWA asli
+        window.submitToWA = function() {
             const subProduct = document.getElementById('sub-product-select').value;
             const buyerName = document.getElementById('buyer-name').value;
             const num = document.getElementById('buyer-number').value;
@@ -2259,6 +2622,37 @@
                 if (index === 2) step.classList.add('active');
             });
         }
+
+        // ===========================================
+        // INISIALISASI DASHBOARD
+        // ===========================================
+        // Tunggu sampai halaman fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (window.MFH_DASHBOARD) {
+                    console.log('MFH Dashboard already initialized');
+                } else {
+                    window.MFH_DASHBOARD = MFH_DASHBOARD;
+                    
+                    // Mulai integrasi setelah 2 detik
+                    setTimeout(() => {
+                        MFH_DASHBOARD.integrateWithWebsite();
+                    }, 2000);
+                }
+            }, 1000);
+        });
+
+        // Tambahkan ke global scope
+        window.MFH_Dashboard = MFH_DASHBOARD;
+
+        // Debug info
+        console.log('🚀 MFH Dashboard Webhook Loaded');
+        console.log('⚙️  Config:', {
+            IP: MFH_DASHBOARD.IP,
+            PORT: MFH_DASHBOARD.PORT,
+            URL: MFH_DASHBOARD.getURL(),
+            Enabled: MFH_DASHBOARD.ENABLED
+        });
     </script>
 </body>
 </html>
